@@ -823,7 +823,10 @@ end
 
 const big_primes = fmpz[]
 
+global _debug = []
+
 function factor(N::fmpz)
+  push!(_debug, N)
   if iszero(N)
     throw(ArgumentError("Argument is not non-zero"))
   end
