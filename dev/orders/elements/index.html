@@ -1,7 +1,4 @@
 
-
-
-
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
@@ -16,7 +13,7 @@
         <meta name="author" content="Tommy Hofmann">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.14">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.0.1">
     
     
       
@@ -24,19 +21,21 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.d3202873.min.css">
-      
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ff0a5ce4.min.css">
-      
+      <link rel="stylesheet" href="../../assets/stylesheets/main.38780c08.min.css">
       
         
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f72e892.min.css">
         
-        <meta name="theme-color" content="#546d78">
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
       
     
     
     
       
+        
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
@@ -58,9 +57,11 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="bluey-grey">
-  
     
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="bluey-grey">
+      
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -137,8 +138,6 @@
 </header>
     
     <div class="md-container" data-md-component="container">
-      
-        
       
       
         
@@ -714,9 +713,6 @@
               
                 
                 
-                  
-                
-                
                 <p><a id='Elements'></a></p>
 <p><a id='Elements-1'></a></p>
 <h1 id="elements">Elements</h1>
@@ -742,11 +738,7 @@
 <p><a id='Basic-properties-1'></a></p>
 <h2 id="basic-properties">Basic properties</h2>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">parent</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfOrd</span>
-</code></pre></div>
-
-<p>Returns the order of which <script type="math/tex">a</script> is an element.</p>
-<div class="codehilite"><pre><span></span><code>parent(g::Perm)
+<div class="codehilite"><pre><span></span><code><span class="n">parent</span><span class="p">(</span><span class="n">g</span><span class="o">::</span><span class="n">Perm</span><span class="p">)</span>
 </code></pre></div>
 
 <blockquote>
@@ -771,6 +763,10 @@ true
 <blockquote>
 <p>Return the parent object of the given matrix.</p>
 </blockquote>
+<div class="codehilite"><pre><span></span><code>parent(a::NfAbsOrdElem) -&gt; NfOrd
+</code></pre></div>
+
+<p>Returns the order of which <script type="math/tex">a</script> is an element.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">elem_in_nf</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">nf_elem</span>
 </code></pre></div>
@@ -808,16 +804,16 @@ true
 
 <p>Returns the one element of <script type="math/tex">\mathcal O</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">iszero</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfOrd</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
-</code></pre></div>
-
-<p>Tests if <script type="math/tex">a</script> is zero.</p>
-<div class="codehilite"><pre><span></span><code>iszero(v::AbstractAlgebra.FPModuleElem{T}) where T &lt;: RingElement
+<div class="codehilite"><pre><span></span><code><span class="n">iszero</span><span class="p">(</span><span class="n">v</span><span class="o">::</span><span class="n">AbstractAlgebra</span><span class="o">.</span><span class="n">FPModuleElem</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="n">where</span> <span class="n">T</span> <span class="o">&lt;:</span> <span class="n">RingElement</span>
 </code></pre></div>
 
 <blockquote>
 <p>Return true if <script type="math/tex">v</script> is the zero element of the module <script type="math/tex">M</script>.</p>
 </blockquote>
+<div class="codehilite"><pre><span></span><code>iszero(a::NfOrd) -&gt; Bool
+</code></pre></div>
+
+<p>Tests if <script type="math/tex">a</script> is zero.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">isone</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfOrd</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
@@ -827,41 +823,7 @@ true
 <p><a id='Arithmetic-1'></a></p>
 <h2 id="arithmetic">Arithmetic</h2>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfAbsOrdElem</span>
-</code></pre></div>
-
-<p>Returns the additive inverse of <script type="math/tex">x</script>.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">-</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
-</code></pre></div>
-
-<p>Return the difference <script type="math/tex">A - B</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(A::SRow, B::SRow) -&gt; SRow
-</code></pre></div>
-
-<p>Returns the difference of <script type="math/tex">A</script> and <script type="math/tex">B</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(A::SRow) -&gt; SRow
-</code></pre></div>
-
-<p>Returns the negative of <script type="math/tex">A</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::AbsAlgAssElem) -&gt; AbsAlgAssElem
-</code></pre></div>
-
-<blockquote>
-<p>Returns <script type="math/tex">-a</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::AbsAlgAssElem, b::AbsAlgAssElem) -&gt; AbsAlgAssElem
-</code></pre></div>
-
-<blockquote>
-<p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::AlgMatElem, b::AlgMatElem) -&gt; AlgMatElem
-</code></pre></div>
-
-<blockquote>
-<p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.ResElem{T}, b::AbstractAlgebra.ResElem{T}) where {T &lt;: RingElement}
+<div class="codehilite"><pre><span></span><code><span class="o">-</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">AbstractAlgebra</span><span class="o">.</span><span class="n">ResElem</span><span class="p">{</span><span class="n">T</span><span class="p">},</span> <span class="n">b</span><span class="o">::</span><span class="n">AbstractAlgebra</span><span class="o">.</span><span class="n">ResElem</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="n">where</span> <span class="p">{</span><span class="n">T</span> <span class="o">&lt;:</span> <span class="n">RingElement</span><span class="p">}</span>
 </code></pre></div>
 
 <blockquote>
@@ -958,6 +920,40 @@ true
 <p>Return <script type="math/tex">a - b</script>.</p>
 </blockquote>
 <div class="codehilite"><pre><span></span><code>-(a::T, b::AbstractAlgebra.FracElem{T}) where {T &lt;: RingElem}
+</code></pre></div>
+
+<blockquote>
+<p>Return <script type="math/tex">a - b</script>.</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code>-(x::NfAbsOrdElem) -&gt; NfAbsOrdElem
+</code></pre></div>
+
+<p>Returns the additive inverse of <script type="math/tex">x</script>.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">-</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
+</code></pre></div>
+
+<p>Return the difference <script type="math/tex">A - B</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(A::SRow, B::SRow) -&gt; SRow
+</code></pre></div>
+
+<p>Returns the difference of <script type="math/tex">A</script> and <script type="math/tex">B</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(A::SRow) -&gt; SRow
+</code></pre></div>
+
+<p>Returns the negative of <script type="math/tex">A</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(a::AbsAlgAssElem) -&gt; AbsAlgAssElem
+</code></pre></div>
+
+<blockquote>
+<p>Returns <script type="math/tex">-a</script>.</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code>-(a::AbsAlgAssElem, b::AbsAlgAssElem) -&gt; AbsAlgAssElem
+</code></pre></div>
+
+<blockquote>
+<p>Return <script type="math/tex">a - b</script>.</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code>-(a::AlgMatElem, b::AlgMatElem) -&gt; AlgMatElem
 </code></pre></div>
 
 <blockquote>
@@ -1076,15 +1072,7 @@ true
 
 <p>Return the <script type="math/tex">T_2</script>-norm of <script type="math/tex">x</script>. The radius of the result will be less than <code>2^-abs_tol</code>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">minpoly</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfRelElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PolyElem</span>
-</code></pre></div>
-
-<p>Given an element <script type="math/tex">a</script> in an extension <script type="math/tex">L/K</script>, this function returns the minimal polynomial of <script type="math/tex">a</script> of <script type="math/tex">K</script>.</p>
-<div class="codehilite"><pre><span></span><code>minpoly(a::NfAbsOrdElem) -&gt; fmpz_poly
-</code></pre></div>
-
-<p>The minimal polynomial of <script type="math/tex">a</script>.    </p>
-<div class="codehilite"><pre><span></span><code>minpoly(S::Ring, M::MatElem{T}, charpoly_only::Bool = false) where {T &lt;: RingElement}
+<div class="codehilite"><pre><span></span><code><span class="n">minpoly</span><span class="p">(</span><span class="n">S</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">M</span><span class="o">::</span><span class="n">MatElem</span><span class="p">{</span><span class="n">T</span><span class="p">},</span> <span class="n">charpoly_only</span><span class="o">::</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="n">where</span> <span class="p">{</span><span class="n">T</span> <span class="o">&lt;:</span> <span class="n">RingElement</span><span class="p">}</span>
 </code></pre></div>
 
 <blockquote>
@@ -1096,19 +1084,27 @@ true
 <blockquote>
 <p>Return the minimal polynomial <script type="math/tex">p</script> of the matrix <script type="math/tex">M</script>. The polynomial ring <script type="math/tex">S</script> of the resulting polynomial must be supplied and the matrix must be square.</p>
 </blockquote>
-<hr />
-<div class="codehilite"><pre><span></span><code><span class="n">charpoly</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">fmpz_poly</span>
-
-<span class="n">charpoly</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">FlintZZ</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">fmpz_poly</span>
+<div class="codehilite"><pre><span></span><code>minpoly(a::NfRelElem) -&gt; PolyElem
 </code></pre></div>
 
-<p>The characteristic polynomial of <script type="math/tex">a</script>.    </p>
-<div class="codehilite"><pre><span></span><code>charpoly(V::Ring, Y::Generic.MatrixElem{T}) where {T &lt;: RingElement}
+<p>Given an element <script type="math/tex">a</script> in an extension <script type="math/tex">L/K</script>, this function returns the minimal polynomial of <script type="math/tex">a</script> of <script type="math/tex">K</script>.</p>
+<div class="codehilite"><pre><span></span><code>minpoly(a::NfAbsOrdElem) -&gt; fmpz_poly
+</code></pre></div>
+
+<p>The minimal polynomial of <script type="math/tex">a</script>.    </p>
+<hr />
+<div class="codehilite"><pre><span></span><code><span class="n">charpoly</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">Y</span><span class="o">::</span><span class="n">Generic</span><span class="o">.</span><span class="n">MatrixElem</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="n">where</span> <span class="p">{</span><span class="n">T</span> <span class="o">&lt;:</span> <span class="n">RingElement</span><span class="p">}</span>
 </code></pre></div>
 
 <blockquote>
 <p>Return the characteristic polynomial <script type="math/tex">p</script> of the matrix <script type="math/tex">M</script>. The polynomial ring <script type="math/tex">R</script> of the resulting polynomial must be supplied and the matrix is assumed to be square.</p>
 </blockquote>
+<div class="codehilite"><pre><span></span><code>charpoly(a::NfAbsOrdElem) -&gt; fmpz_poly
+
+charpoly(a::NfAbsOrdElem, FlintZZ) -&gt; fmpz_poly
+</code></pre></div>
+
+<p>The characteristic polynomial of <script type="math/tex">a</script>.    </p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">factor</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Fac</span><span class="p">{</span><span class="n">NfOrdElem</span><span class="p">}</span>
 </code></pre></div>
@@ -1194,15 +1190,15 @@ true
       
     </div>
     
-      <script src="../../assets/javascripts/vendor.2d1db4bd.min.js"></script>
-      <script src="../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      <script src="../../assets/javascripts/vendor.77e55a48.min.js"></script>
+      <script src="../../assets/javascripts/bundle.aa3f9871.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
           base: "../..",
           features: [],
           search: Object.assign({
-            worker: "../../assets/javascripts/worker/search.5eca75d3.min.js"
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
