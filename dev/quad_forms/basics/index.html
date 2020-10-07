@@ -722,12 +722,10 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">quadratic_space</span><span class="p">(</span><span class="n">K</span><span class="o">::</span><span class="n">NumField</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuadSpace</span>
 </code></pre></div>
-
 <p>Create the quadratic space over <code>K</code> with dimension <code>n</code> and Gram matrix equal to the identity matrix.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">quadratic_space</span><span class="p">(</span><span class="n">K</span><span class="o">::</span><span class="n">NumField</span><span class="p">,</span> <span class="n">G</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuadSpace</span>
 </code></pre></div>
-
 <p>Create the quadratic space over <code>K</code> with Gram matrix <code>G</code>. The matrix <code>G</code> must be square and symmetric.</p>
 <p><a id='Attributes'></a></p>
 <p><a id='Attributes-1'></a></p>
@@ -735,17 +733,14 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">rank</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">AbsSpace</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
 </code></pre></div>
-
 <p>Return the rank of the space <code>V</code>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">dim</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">AbsSpace</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
 </code></pre></div>
-
 <p>Return the dimension of the space <code>V</code>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">gram_matrix</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">AbsSpace</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MatElem</span>
 </code></pre></div>
-
 <p>Return the Gram matrix of <code>V</code>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Missing docstring.</p>
@@ -754,22 +749,18 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">involution</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">AbsSpace</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NumField</span>
 </code></pre></div>
-
 <p>Return the involution of <code>V</code>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">isregular</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">AbsSpace</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Return whether <code>V</code> is regular, that is, if the Gram matrix has full rank.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">det</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">AbsSpace</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FieldElem</span>
 </code></pre></div>
-
 <p>Returns the determinant of the space <code>V</code> as an element of the fixed field.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">discriminant</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">AbsSpace</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FieldElem</span>
 </code></pre></div>
-
 <p>Returns the discriminant of the space <code>V</code> as an element of the fixed field.</p>
 <p><a id='Inner-products-and-diagonalization'></a></p>
 <p><a id='Inner-products-and-diagonalization-1'></a></p>
@@ -777,27 +768,22 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">gram_matrix</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">AbsSpace</span><span class="p">,</span> <span class="n">M</span><span class="o">::</span><span class="n">MatElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MatElem</span>
 </code></pre></div>
-
 <p>Returns the gram matrix of the rows of <code>M</code>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">gram_matrix</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">AbsSpace</span><span class="p">,</span> <span class="n">S</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="kt">Vector</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">MatElem</span>
 </code></pre></div>
-
 <p>Returns the gram matrix of the sequence <code>S</code>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">inner_product</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">AbsSpace</span><span class="p">,</span> <span class="n">v</span><span class="o">::</span><span class="kt">Vector</span><span class="p">,</span> <span class="n">w</span><span class="o">::</span><span class="kt">Vector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FieldElem</span>
 </code></pre></div>
-
 <p>Returns the inner product of <code>v</code> and <code>w</code> with respect to <code>V</code>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">orthogonal_basis</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">AbsSpace</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MatElem</span>
 </code></pre></div>
-
 <p>Returns a matrix <code>M</code>, such that the rows of <code>M</code> form an orthgonal basis of <code>V</code>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">diagonal</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">AbsSpace</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Vector</span><span class="p">{</span><span class="n">FieldElem</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Returns a vector of elements <script type="math/tex">a_1,\dotsc,a_n</script> such that <code>V</code> is isometric to the diagonal space <script type="math/tex">\langle a_1,\dotsc,a_n \rangle</script>.</p>
 <p>The elements will be contained in the fixed field of <code>V</code>.</p>
 <p><a id='Equivalence'></a></p>
@@ -806,30 +792,25 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">hasse_invariant</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">QuadSpace</span><span class="p">,</span> <span class="n">p</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">,</span> <span class="n">NfOrdIdl</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
 </code></pre></div>
-
 <p>Returns the Hasse invariant of the quadratic space <code>V</code> at <code>p</code>. This is equal to the product of local Hilbert symbols <script type="math/tex">(a_i, a_j)_p</script>, <script type="math/tex">i < j</script>, where <script type="math/tex">V</script> is isometric to <script type="math/tex">\langle a_1,\dotsc,a_n\rangle</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">witt_invariant</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">QuadSpace</span><span class="p">,</span> <span class="n">p</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">,</span> <span class="n">NfOrdIdl</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
 </code></pre></div>
-
 <p>Returns the Witt invariant of the quadratic space <code>V</code> at <code>p</code>.</p>
 <p>See [Definition 3.2.1, Kir16].</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">isequivalent</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsSpace</span><span class="p">,</span> <span class="n">M</span><span class="o">::</span><span class="n">AbsSpace</span><span class="p">,</span> <span class="n">p</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">,</span> <span class="n">NfOrdIdl</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Returns whether <code>L</code> and <code>M</code> are equivalent over the completion at <code>p</code>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">invariants</span><span class="p">(</span><span class="n">M</span><span class="o">::</span><span class="n">QuadSpace</span><span class="p">)</span>
       <span class="o">-&gt;</span> <span class="n">FieldElem</span><span class="p">,</span> <span class="kt">Dict</span><span class="p">{</span><span class="n">NfOrdIdl</span><span class="p">,</span> <span class="kt">Int</span><span class="p">},</span> <span class="kt">Vector</span><span class="p">{</span><span class="kt">Tuple</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">,</span> <span class="kt">Int</span><span class="p">}}</span>
 </code></pre></div>
-
 <p>Returns a triple <code>(d, H, I)</code> of invariants of <code>M</code>, which determine the equivalence class completely. The element <code>d</code> is the determinant of a Gram matrix, <code>H</code> contains the non-trivial Hasse invariants and <code>I</code> contains for each real place the negative index of inertia.</p>
 <p>Note that <code>d</code> is determined only modulo squares.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">isequivalent</span><span class="p">(</span><span class="n">M</span><span class="o">::</span><span class="n">QuadSpace</span><span class="p">,</span> <span class="n">L</span><span class="o">::</span><span class="n">QuadSpace</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Tests if <code>M</code> and <code>L</code> are equivalent.</p>
                 
               

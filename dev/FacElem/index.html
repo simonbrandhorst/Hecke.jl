@@ -734,45 +734,36 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">FacElem</span><span class="p">{</span><span class="n">B</span><span class="p">}(</span><span class="n">R</span><span class="p">,</span> <span class="n">base</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="n">B</span><span class="p">,</span> <span class="mi">1</span><span class="p">},</span> <span class="n">exp</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="n">fmpz</span><span class="p">,</span> <span class="mi">1</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">FacElem</span><span class="p">{</span><span class="n">B</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Returns the element <script type="math/tex">\prod b_i^{e_i}</script>, un-expanded.</p>
 <div class="codehilite"><pre><span></span><code>FacElem{B}(base::Array{B, 1}, exp::Array{fmpz, 1}) -&gt; FacElem{B}
 </code></pre></div>
-
 <p>Returns the element <script type="math/tex">\prod b_i^{e_i}</script>, un-expanded.</p>
 <div class="codehilite"><pre><span></span><code>FacElem{B}(R, d::Dict{B, fmpz}) -&gt; FacElem{B}
 FacElem{B}(R, d::Dict{B, Integer}) -&gt; FacElem{B}
 </code></pre></div>
-
 <p>Returns the element <script type="math/tex">\prod b^{d[p]}</script>, un-expanded.</p>
 <div class="codehilite"><pre><span></span><code>FacElem{B}(d::Dict{B, fmpz}) -&gt; FacElem{B}
 FacElem{B}(d::Dict{B, Integer}) -&gt; FacElem{B}
 </code></pre></div>
-
 <p>Returns the element <script type="math/tex">\prod b^{d[p]}</script>, un-expanded.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">FacElem</span><span class="p">{</span><span class="n">B</span><span class="p">}(</span><span class="n">R</span><span class="p">,</span> <span class="n">base</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="n">B</span><span class="p">,</span> <span class="mi">1</span><span class="p">},</span> <span class="n">exp</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="n">fmpz</span><span class="p">,</span> <span class="mi">1</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">FacElem</span><span class="p">{</span><span class="n">B</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Returns the element <script type="math/tex">\prod b_i^{e_i}</script>, un-expanded.</p>
 <div class="codehilite"><pre><span></span><code>FacElem{B}(base::Array{B, 1}, exp::Array{fmpz, 1}) -&gt; FacElem{B}
 </code></pre></div>
-
 <p>Returns the element <script type="math/tex">\prod b_i^{e_i}</script>, un-expanded.</p>
 <div class="codehilite"><pre><span></span><code>FacElem{B}(R, d::Dict{B, fmpz}) -&gt; FacElem{B}
 FacElem{B}(R, d::Dict{B, Integer}) -&gt; FacElem{B}
 </code></pre></div>
-
 <p>Returns the element <script type="math/tex">\prod b^{d[p]}</script>, un-expanded.</p>
 <div class="codehilite"><pre><span></span><code>FacElem{B}(d::Dict{B, fmpz}) -&gt; FacElem{B}
 FacElem{B}(d::Dict{B, Integer}) -&gt; FacElem{B}
 </code></pre></div>
-
 <p>Returns the element <script type="math/tex">\prod b^{d[p]}</script>, un-expanded.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code> <span class="n">ideal</span><span class="p">(</span><span class="n">O</span><span class="o">::</span><span class="n">NfOrd</span><span class="p">,</span> <span class="n">a</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">,</span> <span class="n">AnticNumberField</span><span class="p">)</span>
 </code></pre></div>
-
 <p>The factored fractional ideal <script type="math/tex">a*O</script>.</p>
 <p><a id='Conversion'></a></p>
 <p><a id='Conversion-1'></a></p>
@@ -785,7 +776,6 @@ FacElem{B}(d::Dict{B, Integer}) -&gt; FacElem{B}
 <div class="codehilite"><pre><span></span><code><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">fmpq</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">fmpq</span>
 <span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">fmpz</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">fmpz</span>
 </code></pre></div>
-
 <p>Expands or evaluates the factored element, i.e. actually computes the the element.  Works by first obtaining a simplified version of the power product into coprime base elements.</p>
 <hr />
 <p>evaluate{T}(x::FacElem{T}) -&gt; T</p>
@@ -801,45 +791,37 @@ FacElem{B}(d::Dict{B, Integer}) -&gt; FacElem{B}
 <div class="codehilite"><pre><span></span><code><span class="n">simplify</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">NfOrdIdl</span><span class="p">,</span> <span class="n">NfOrdIdlSet</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">FacElem</span>
 <span class="n">simplify</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">NfOrdFracIdl</span><span class="p">,</span> <span class="n">NfOrdFracIdlSet</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">FacElem</span>
 </code></pre></div>
-
 <p>Uses <code>coprime_base</code> to obtain a simplified version of <script type="math/tex">x</script>, ie. in the simplified version all base ideals will be pariwise coprime but not neccessarily prime!.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">simplify</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">fmpq</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">FacElem</span><span class="p">{</span><span class="n">fmpq</span><span class="p">}</span>
 <span class="n">simplify</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">fmpz</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">FacElem</span><span class="p">{</span><span class="n">fmpz</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Simplfies the factored element, i.e. arranges for the base to be coprime.</p>
 <p>The simplified version can then be used further:</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">isone</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">fmpq</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 <span class="n">isone</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">fmpz</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Tests if <script type="math/tex">x</script> represents <script type="math/tex">1</script> without an evaluation.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">factor_coprime</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">fmpz</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">Fac</span><span class="p">{</span><span class="n">fmpz</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Computed a partial factorisation of <script type="math/tex">x</script>, ie. writes <script type="math/tex">x</script> as a product of pariwise coprime integers.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">factor_coprime</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">NfOrdIdl</span><span class="p">,</span> <span class="n">NfOrdIdlSet</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kt">Dict</span><span class="p">{</span><span class="n">NfOrdIdl</span><span class="p">,</span> <span class="kt">Int</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Computed a partial factorisation of <script type="math/tex">x</script>, ie. writes <script type="math/tex">x</script> as a product of pariwise coprime integral ideals.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">factor_coprime</span><span class="p">(</span><span class="n">Q</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">NfOrdFracIdl</span><span class="p">,</span> <span class="n">NfOrdFracIdlSet</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kt">Dict</span><span class="p">{</span><span class="n">NfOrdIdl</span><span class="p">,</span> <span class="kt">Int</span><span class="p">}</span>
 </code></pre></div>
-
 <p>A coprime factorisation of <script type="math/tex">Q</script>: each ideal in <script type="math/tex">Q</script> is split using \code{integral_split} and then a coprime basis is computed. This does {\bf not} use any factorisation.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">factor_coprime</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">,</span> <span class="n">AnticNumberField</span><span class="p">},</span> <span class="nb">I</span><span class="o">::</span><span class="n">NfOrdIdlSet</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Dict</span><span class="p">{</span><span class="n">NfOrdIdl</span><span class="p">,</span> <span class="n">fmpz</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Factors the rincipal ideal generated by <script type="math/tex">a</script> into coprimes by computing a coprime basis from the principal ideals in the factorisation of <script type="math/tex">a</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code> <span class="n">factor</span><span class="p">(</span><span class="n">Q</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">NfOrdFracIdl</span><span class="p">,</span> <span class="n">NfOrdFracIdlSet</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kt">Dict</span><span class="p">{</span><span class="n">NfOrdIdl</span><span class="p">,</span> <span class="kt">Int</span><span class="p">}</span>
 </code></pre></div>
-
 <p>The factorisation of <script type="math/tex">Q</script>, by refining a coprime factorisation.</p>
 <hr />
 <p>factor(a::FacElem{nf_elem, AnticNumberField}, I::NfOrdIdlSet) -&gt; Dict{NfOrdIdl, fmpz} Factors the principal ideal generated by <script type="math/tex">a</script> by refinind a coprime factorisation.</p>
@@ -847,69 +829,57 @@ FacElem{B}(d::Dict{B, Integer}) -&gt; FacElem{B}
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">compact_presentation</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">,</span> <span class="n">AnticNumberField</span><span class="p">},</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">decom</span><span class="p">,</span> <span class="n">arb_prec</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">short_prec</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FacElem</span>
 </code></pre></div>
-
 <p>Computes a presentation <script type="math/tex">a = \prod a_i^{n_i}</script> where all the exponents <script type="math/tex">n_i</script> are powers of <script type="math/tex">n</script> and, the elements <script type="math/tex">a</script> are "small", generically, they have a norm bounded by <script type="math/tex">d^{n/2}</script> where <script type="math/tex">d</script> is the discriminant of the maximal order. As the algorithm needs the factorisation of the principal ideal generated by <script type="math/tex">a</script>, it can be passed in in \code{decom}.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">signs</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">nf_elem</span><span class="p">)</span>          <span class="o">-&gt;</span> <span class="kt">Dict</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">,</span> <span class="kt">Int</span><span class="p">}</span>
 <span class="n">signs</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kt">Dict</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">,</span> <span class="kt">Int</span><span class="p">}</span>
 </code></pre></div>
-
 <p>This function returns a dictionary of the signs of <script type="math/tex">a</script> at all infinite places of the ambient number field. The keys are infinite places of the ambient number field. The value is <script type="math/tex">1</script> if the sign is positive and <script type="math/tex">-1</script> if the sign is negative.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">signs</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">nf_elem</span><span class="p">,</span> <span class="n">l</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">})</span>          <span class="o">-&gt;</span> <span class="kt">Dict</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">,</span> <span class="kt">Int</span><span class="p">}</span>
 <span class="n">signs</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">},</span> <span class="n">l</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kt">Dict</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">,</span> <span class="kt">Int</span><span class="p">}</span>
 </code></pre></div>
-
 <p>This function returns a dictionary of the signs of <script type="math/tex">a</script> at places in <script type="math/tex">l</script>. The keys are the elements of <script type="math/tex">l</script>. The value is <script type="math/tex">1</script> if the sign is positive and <script type="math/tex">-1</script> if the sign is negative. The result will contain as many signs as there are real places contained in <script type="math/tex">l</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">sign</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">nf_elem</span><span class="p">,</span> <span class="n">P</span><span class="o">::</span><span class="n">InfPlc</span><span class="p">)</span>          <span class="o">-&gt;</span> <span class="kt">Int</span>
 <span class="n">sign</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">},</span> <span class="n">P</span><span class="o">::</span><span class="n">InfPlc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
 </code></pre></div>
-
 <p>This function returns the sign of <script type="math/tex">a</script> at the place <script type="math/tex">P</script>. The value is <script type="math/tex">1</script> if the sign is positive and <script type="math/tex">-1</script> if the sign is negative.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">ispositive</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">nf_elem</span><span class="p">,</span> <span class="n">P</span><span class="o">::</span><span class="n">InfPlc</span><span class="p">)</span>          <span class="o">-&gt;</span> <span class="kt">Bool</span>
 <span class="n">ispositive</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">},</span> <span class="n">P</span><span class="o">::</span><span class="n">InfPlc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Returns whether the element <script type="math/tex">a</script> is positive at the embedding corresponding to <script type="math/tex">P</script>. The place <script type="math/tex">P</script> must be real.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">ispositive</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">nf_elem</span><span class="p">,</span> <span class="n">l</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">})</span>          <span class="o">-&gt;</span> <span class="kt">Bool</span>
 <span class="n">ispositive</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">},</span> <span class="n">l</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Returns whether the element <script type="math/tex">a</script> is positive at the embeddings corresponding to the real places of <script type="math/tex">l</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">istotally_positive</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">nf_elem</span><span class="p">)</span>          <span class="o">-&gt;</span> <span class="kt">Bool</span>
 <span class="n">istotally_positive</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Returns whether the element <script type="math/tex">a</script> is totally positive, that is, whether it is positive at all places of the ambient number field.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">valuation</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">,</span> <span class="n">AnticNumberField</span><span class="p">},</span> <span class="n">P</span><span class="o">::</span><span class="n">NfOrdIdl</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">fmpz</span>
 </code></pre></div>
-
 <p>The valuation of <script type="math/tex">a</script> at <script type="math/tex">P</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">valuation</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">NfOrdFracIdl</span><span class="p">,</span> <span class="n">NfOrdFracIdlSet</span><span class="p">},</span> <span class="n">p</span><span class="o">::</span><span class="n">NfOrdIdl</span><span class="p">)</span>
 <span class="n">valuation</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">NfOrdIdl</span><span class="p">,</span> <span class="n">NfOrdIdlSet</span><span class="p">},</span> <span class="n">p</span><span class="o">::</span><span class="n">NfOrdIdl</span><span class="p">)</span>
 </code></pre></div>
-
 <p>The valuation of <script type="math/tex">A</script> at <script type="math/tex">P</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">evaluate_mod</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">,</span> <span class="n">AnticNumberField</span><span class="p">},</span> <span class="n">B</span><span class="o">::</span><span class="n">NfOrdFracIdl</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">nf_elem</span>
 </code></pre></div>
-
 <p>Evaluates <script type="math/tex">a</script> using CRT and small primes. Assumes that the ideal generated by <script type="math/tex">a</script> is in fact <script type="math/tex">B</script>. Useful in cases where <script type="math/tex">a</script> has huge exponents, but the evaluated element is actually "small".</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">reduce_ideal</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">NfOrdIdl</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">NfOrdIdl</span><span class="p">,</span> <span class="n">FacElem</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Computes <script type="math/tex">B</script> and <script type="math/tex">\alpha</script> in factored form, such that <script type="math/tex">\alpha B = A</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">modular_proj</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">FacElem</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">,</span> <span class="n">AnticNumberField</span><span class="p">},</span> <span class="n">me</span><span class="o">::</span><span class="n">modular_env</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Array</span><span class="p">{</span><span class="n">fq_nmod</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Given an algebraic number <script type="math/tex">a</script> in factored form and data \code{me} as computed by \code{modular_init}, project <script type="math/tex">a</script> onto the residue class fields.</p>
 <p><a id='Miscellaneous'></a></p>
 <p><a id='Miscellaneous-1'></a></p>
@@ -917,19 +887,16 @@ FacElem{B}(d::Dict{B, Integer}) -&gt; FacElem{B}
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">max_exp</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">FacElem</span><span class="p">)</span>
 </code></pre></div>
-
 <p>Finds the largest exponent in the factored element <script type="math/tex">a</script>
 </p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">min_exp</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">FacElem</span><span class="p">)</span>
 </code></pre></div>
-
 <p>Finds the smallest exponent in the factored element <script type="math/tex">a</script>
 </p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">maxabs_exp</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">FacElem</span><span class="p">)</span>
 </code></pre></div>
-
 <p>Finds the largest exponent by absolute value the factored element <script type="math/tex">a</script>
 </p>
                 

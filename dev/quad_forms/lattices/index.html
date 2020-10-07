@@ -846,25 +846,21 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">quadratic_lattice</span><span class="p">(</span><span class="n">K</span><span class="o">::</span><span class="n">NumField</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">MatElem</span><span class="p">;</span> <span class="n">gram_ambient_space</span> <span class="o">=</span> <span class="n">F</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuadLat</span>
 </code></pre></div>
-
 <p>Given a number field <script type="math/tex">K</script> and a matrix <script type="math/tex">B</script>, returns the quadratic lattice spanned by the rows <script type="math/tex">B</script> inside the quadratic space over <script type="math/tex">K</script> with gram matrix <script type="math/tex">F</script>.</p>
 <p>If <script type="math/tex">F</script> is not supplied, the gram matrix of the ambient space will be the identity matrix.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">quadratic_lattice</span><span class="p">(</span><span class="n">K</span><span class="o">::</span><span class="n">NumField</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">PMat</span><span class="p">;</span> <span class="n">gram_ambient_space</span> <span class="o">=</span> <span class="n">F</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuadLat</span>
 </code></pre></div>
-
 <p>Given a number field <script type="math/tex">K</script> and a pseudo-matrix <script type="math/tex">B</script>, returns the quadratic lattice spanned by the pseudo-matrix <script type="math/tex">B</script> inside the quadratic space over <script type="math/tex">K</script> with gram matrix <script type="math/tex">F</script>.</p>
 <p>If <script type="math/tex">F</script> is not supplied, the gram matrix of the ambient space will be the identity matrix.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">hermitian_lattice</span><span class="p">(</span><span class="n">K</span><span class="o">::</span><span class="n">NumField</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">MatElem</span><span class="p">;</span> <span class="n">gram_ambient_space</span> <span class="o">=</span> <span class="n">F</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HermLat</span>
 </code></pre></div>
-
 <p>Given a number field <script type="math/tex">K</script> and a matrix <script type="math/tex">B</script>, returns the hermitian lattice spanned by the rows <script type="math/tex">B</script> inside the hermitian space over <script type="math/tex">K</script> with gram matrix <script type="math/tex">F</script>.</p>
 <p>If <script type="math/tex">F</script> is not supplied, the gram matrix of the ambient space will be the identity matrix.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">hermitian_lattice</span><span class="p">(</span><span class="n">K</span><span class="o">::</span><span class="n">NumField</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">PMat</span><span class="p">;</span> <span class="n">gram_ambient_space</span> <span class="o">=</span> <span class="n">F</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HermLat</span>
 </code></pre></div>
-
 <p>Given a number field <script type="math/tex">K</script> and a pseudo-matrix <script type="math/tex">B</script>, returns the hermitian lattice spanned by the pseudo-matrix <script type="math/tex">B</script> inside the hermitian space over <script type="math/tex">K</script> with gram matrix <script type="math/tex">F</script>.</p>
 <p>If <script type="math/tex">F</script> is not supplied, the gram matrix of the ambient space will be the identity matrix.</p>
 <hr />
@@ -874,78 +870,63 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">ambient_space</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbsSpace</span>
 </code></pre></div>
-
 <p>Returns the ambient space of <script type="math/tex">L</script>. If the ambient space is not known, an error is raised.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">rational_span</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbsSpace</span>
 </code></pre></div>
-
 <p>Returns the rational span of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">diagonal</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Vector</span>
 </code></pre></div>
-
 <p>Returns the diagonal of the rational span of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">fixed_field</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NumField</span>
 </code></pre></div>
-
 <p>Returns the fixed field of the involution of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">involution</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Map</span>
 </code></pre></div>
-
 <p>Returns the involution of the rational span of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">rank</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
 </code></pre></div>
-
 <p>Returns the rank of <script type="math/tex">L</script>, that is the dimension of the rational span of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">degree</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
 </code></pre></div>
-
 <p>Returns the rank of the ambient space of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">gram_matrix_of_basis</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MatElem</span>
 </code></pre></div>
-
 <p>Returns the gram matrix of the ?? of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">generators</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">;</span> <span class="n">minimal</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Vector</span><span class="p">{</span><span class="kt">Vector</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Returns a set of generators of <script type="math/tex">L</script>.</p>
 <p>If <code>minimal == true</code>, the number of generators is minimal.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">discriminant</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfOrdFracIdl</span>
 </code></pre></div>
-
 <p>Returns the discriminant of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">pseudo_matrix</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PMat</span>
 </code></pre></div>
-
 <p>Returns the basis pseudo-matrix of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">coefficient_ideals</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">Abs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Vector</span><span class="p">{</span><span class="n">NfOrdIdl</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Returns the coefficient ideals of the pseudo-basis of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">basis_matrix</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MatElem</span>
 </code></pre></div>
-
 <p>Returns the ??? of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">absolute_basis</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Vector</span>
 </code></pre></div>
-
 <p>Returns a <script type="math/tex">\mathbf{Z}</script>-basis of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">absolute_basis_matrix</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MatElem</span>
 </code></pre></div>
-
 <p>Returns a <script type="math/tex">\mathbf{Z}</script>-basis matrix of <script type="math/tex">L</script>.</p>
 <hr />
 <p><a id='Rational-invariants'></a></p>
@@ -954,24 +935,20 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">hasse_invariant</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">,</span> <span class="n">p</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">,</span> <span class="n">NfOrdIdl</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
 </code></pre></div>
-
 <p>Returns the Hasse invariant of the rational span of <script type="math/tex">L</script> at <script type="math/tex">p</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">witt_invariant</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">,</span> <span class="n">p</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">,</span> <span class="n">NfOrdIdl</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
 </code></pre></div>
-
 <p>Returns the Witt invariant of the rational span of <script type="math/tex">L</script> at <script type="math/tex">p</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">isrationally_equivalent</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">,</span> <span class="n">M</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">,</span> <span class="n">p</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">,</span> <span class="n">NfOrdIdl</span><span class="p">})</span>
                                                                      <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Returns whether the rational spans <script type="math/tex">L</script> and <script type="math/tex">M</script> are equivalent over the completion at <script type="math/tex">\mathfrak p</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">isrationally_equivalent</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">,</span> <span class="n">M</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">,</span> <span class="n">p</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">,</span> <span class="n">NfOrdIdl</span><span class="p">})</span>
                                                                      <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Returns whether the rational spans <script type="math/tex">L</script> and <script type="math/tex">M</script> are equivalent.</p>
 <hr />
 <p><a id='Definiteness'></a></p>
@@ -980,22 +957,18 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">ispositive_definite</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Returns whether the rational span of <script type="math/tex">L</script> is positive definite.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">isnegative_definite</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Returns whether the rational span of <script type="math/tex">L</script> is negative definite.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">isdefinite</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Returns whether the rational span of <script type="math/tex">L</script> is definite.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">can_scale_totally_positive</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">,</span> <span class="n">NumFieldElem</span>
 </code></pre></div>
-
 <p>Returns whether there is totally positive rescaled lattice of <script type="math/tex">L</script>. If so, the second return value is an element <script type="math/tex">a</script> such that <script type="math/tex">L^a</script> is totally positive.</p>
 <hr />
 <p><a id='Module-operations'></a></p>
@@ -1004,39 +977,32 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="o">+</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">,</span> <span class="n">M</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbsLat</span>
 </code></pre></div>
-
 <p>Returns the sum of <script type="math/tex">L</script> and <script type="math/tex">M</script>.</p>
 <p>The lattices <script type="math/tex">L</script> and <script type="math/tex">M</script> must have the same ambient space.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">intersect</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">,</span> <span class="n">M</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbsLat</span>
 </code></pre></div>
-
 <p>Returns the intersection of <script type="math/tex">L</script> and <script type="math/tex">M</script>.</p>
 <p>The lattices <script type="math/tex">L</script> and <script type="math/tex">M</script> must have the same ambient space.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NumFieldElem</span><span class="p">,</span> <span class="n">M</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbsLat</span>
 </code></pre></div>
-
 <p>Returns the lattice <script type="math/tex">aM</script> inside the ambient space of <script type="math/tex">M</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfOrdIdl</span><span class="p">,</span> <span class="n">M</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbsLat</span>
 </code></pre></div>
-
 <p>Returns the lattice <script type="math/tex">aM</script> inside the ambient space of <script type="math/tex">M</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfOrdFracIdl</span><span class="p">,</span> <span class="n">M</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbsLat</span>
 </code></pre></div>
-
 <p>Returns the lattice <script type="math/tex">aM</script> inside the ambient space of <script type="math/tex">M</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">rescale</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">,</span> <span class="n">a</span><span class="o">::</span><span class="n">NumFieldElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbsLat</span>
 </code></pre></div>
-
 <p>Returns the rescaled lattice <script type="math/tex">L^a</script>. Note that this has a different ambient space then <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">dual</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbsLat</span>
 </code></pre></div>
-
 <p>Returns the dual lattice of <script type="math/tex">L</script>.</p>
 <hr />
 <p><a id='Invariants'></a></p>
@@ -1045,27 +1011,22 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">norm</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfOrdFracIdl</span>
 </code></pre></div>
-
 <p>Returns the norm of <script type="math/tex">L</script>. This is a fractional ideal of the fixed field of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">scale</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfOrdFracIdl</span>
 </code></pre></div>
-
 <p>Returns the scale of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">isintegral</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Returns whether the lattice <script type="math/tex">L</script> is integral.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">volume</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfOrdFracIdl</span>
 </code></pre></div>
-
 <p>Returns the volume of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">ismodular</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">,</span> <span class="n">NfOrdFracIdl</span>
 </code></pre></div>
-
 <p>Returns whether <script type="math/tex">L</script> is modular. In this case, the second return value is a fractional ideal <script type="math/tex">\mathfrak a</script> such that <script type="math/tex">\mathfrak a L^\# = L</script>, where <script type="math/tex">L^\#</script> is the dual of <script type="math/tex">L</script>.</p>
 <hr />
 <p><a id='Local-properties'></a></p>
@@ -1074,7 +1035,6 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">local_basis_matrix</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">,</span> <span class="n">p</span><span class="o">::</span><span class="n">NfOrdIdl</span><span class="p">;</span> <span class="k">type</span> <span class="o">=</span> <span class="o">:</span><span class="n">any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MatElem</span>
 </code></pre></div>
-
 <p>Given a prime ideal <script type="math/tex">\mathfrak p</script> and a lattice <script type="math/tex">L</script>, this functions returns a basis matrix of lattice <script type="math/tex">M</script> such that <script type="math/tex">M_{\mathfrak{p}} = L_{\mathfrak{p}}</script>.</p>
 <ul>
 <li>If <code>type == :submodule</code>, the lattice <script type="math/tex">L</script> will be a sublattice of <script type="math/tex">M</script>.</li>
@@ -1084,7 +1044,6 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">ismodular</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">,</span> <span class="n">p</span><span class="o">::</span><span class="n">NfOrdIdl</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">,</span> <span class="kt">Int</span>
 </code></pre></div>
-
 <p>Returns whether <script type="math/tex">L_{\mathfrak{p}}</script> is modular. In this case the second return value is an integer <script type="math/tex">v</script> such that <script type="math/tex">L_{\mathfrak{p}}</script> is <script type="math/tex">\mathfrak{p}^v</script>-modular.</p>
 <div class="admonition warning">
 <p class="admonition-title">Missing docstring.</p>
@@ -1094,13 +1053,11 @@
 <div class="codehilite"><pre><span></span><code><span class="n">jordan_decomposition</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">,</span> <span class="n">p</span><span class="o">::</span><span class="n">NfOrdIdl</span><span class="p">)</span>
                             <span class="o">-&gt;</span> <span class="kt">Vector</span><span class="p">{</span><span class="n">MatElem</span><span class="p">},</span> <span class="kt">Vector</span><span class="p">{</span><span class="n">MatElem</span><span class="p">},</span> <span class="kt">Vector</span><span class="p">{</span><span class="kt">Int</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Returns a Jordan decomposition of the completition of <script type="math/tex">L</script> at <script type="math/tex">\mathfrak p</script>.</p>
 <p>The return value consists of three lists <script type="math/tex">(M_i)_i</script>, <script type="math/tex">(G_i)_i</script> and <script type="math/tex">(s_i)_i</script> of the same length <script type="math/tex">r</script>. The completions of the row spans of the matrices <script type="math/tex">M_i</script> yield a Jordan decomposition of <script type="math/tex">L_{\mathfrak{p}}</script> into modular sublattices <script type="math/tex">L_i</script> with gram matrices <script type="math/tex">G_i</script> and scale of <script type="math/tex">\mathfrak{p}</script>-adic valuation <script type="math/tex">s_i</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">islocally_isometric</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">,</span> <span class="n">M</span><span class="o">::</span><span class="n">AbsLat</span><span class="p">,</span> <span class="n">p</span><span class="o">::</span><span class="n">NfOrdIdl</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Returns whether the completions of <script type="math/tex">L</script> and <script type="math/tex">M</script> at the prime ideal <script type="math/tex">\mathfrak{p}</script> are locally isometric.</p>
 <hr />
 <p><a id='Genera'></a></p>
@@ -1112,13 +1069,11 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">genus</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">HermLat</span><span class="p">,</span> <span class="n">p</span><span class="o">::</span><span class="n">NfOrdIdl</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LocalGenusHerm</span>
 </code></pre></div>
-
 <p>Returns the genus of <script type="math/tex">L</script> at the prime ideal <script type="math/tex">\mathfrak p</script>.</p>
 <p>See [Kir16, Definition 8.3.1].</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">genus</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">HermLat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GenusHerm</span>
 </code></pre></div>
-
 <p>Given a Hermitian lattice, return the genus it belongs to.</p>
 <hr />
 <p><a id='Properties-of-genera'></a></p>
@@ -1127,37 +1082,30 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">rank</span><span class="p">(</span><span class="n">G</span><span class="o">::</span><span class="n">LocalGenusHerm</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
 </code></pre></div>
-
 <p>Given a genus symbol <script type="math/tex">G</script>, return the rank of a lattice in <script type="math/tex">G</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">rank</span><span class="p">(</span><span class="n">G</span><span class="o">::</span><span class="n">LocalGenusHerm</span><span class="p">,</span> <span class="n">i</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
 </code></pre></div>
-
 <p>Given a genus symbol for Hermitian lattices over <script type="math/tex">E/K</script>, return the rank of the <script type="math/tex">i</script>th Jordan block of <script type="math/tex">G</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">ranks</span><span class="p">(</span><span class="n">G</span><span class="o">::</span><span class="n">LocalGenusHerm</span><span class="p">)</span>
 </code></pre></div>
-
 <p>Given a genus symbol for Hermitian lattices over <script type="math/tex">E/K</script>, return the ranks of the Jordan block of <script type="math/tex">G</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">det</span><span class="p">(</span><span class="n">G</span><span class="o">::</span><span class="n">LocalGenusHerm</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
 </code></pre></div>
-
 <p>Given a genus symbol <script type="math/tex">G</script>, return the determinant of a lattice in <script type="math/tex">G</script>. This will be <code>1</code> or <code>-1</code> depending on whether the determinant is a local norm or not.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">det_representative</span><span class="p">(</span><span class="n">G</span><span class="o">::</span><span class="n">LocalGenusHerm</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NumFieldElem</span>
 </code></pre></div>
-
 <p>Return a representative for the norm class of the determinant of <script type="math/tex">G</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">gram_matrix</span><span class="p">(</span><span class="n">G</span><span class="o">::</span><span class="n">LocalGenusHerm</span><span class="p">)</span>
 </code></pre></div>
-
 <p>Return a matrix <script type="math/tex">M</script>, such that a lattice with Gram matrix <script type="math/tex">M</script> is an element of the given genus.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">primes</span><span class="p">(</span><span class="n">G</span><span class="o">::</span><span class="n">GenusHerm</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Vector</span><span class="p">{</span><span class="n">NfOrdIdl</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Return the primes of a global genus symbol.</p>
 <hr />
 <p><a id='Check-if-lattice-is-contained-in-genus'></a></p>
@@ -1166,12 +1114,10 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="kp">in</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">HermLat</span><span class="p">,</span> <span class="n">G</span><span class="o">::</span><span class="n">LocalGenusHerm</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Test if the lattice <script type="math/tex">L</script> is contained in the local genus <script type="math/tex">G</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="kp">in</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">HermLat</span><span class="p">,</span> <span class="n">G</span><span class="o">::</span><span class="n">LocalGenusHerm</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Test if the lattice <script type="math/tex">L</script> is contained in the local genus <script type="math/tex">G</script>.</p>
 <hr />
 <p><a id='Creating-representatives'></a></p>
@@ -1180,7 +1126,6 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">representative</span><span class="p">(</span><span class="n">G</span><span class="o">::</span><span class="n">LocalGenusHerm</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HermLat</span>
 </code></pre></div>
-
 <p>Given a local genus, return a Hermitian lattice contained in this genus.</p>
                 
               

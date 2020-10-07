@@ -760,24 +760,20 @@
 <div class="codehilite"><pre><span></span><code><span class="n">NumberField</span><span class="p">(</span><span class="n">f</span><span class="o">::</span><span class="n">Poly</span><span class="p">{</span><span class="n">NumFieldElem</span><span class="p">},</span> <span class="n">s</span><span class="o">::</span><span class="n">String</span><span class="p">;</span>
             <span class="n">cached</span><span class="o">::</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">check</span><span class="o">::</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NumField</span><span class="p">,</span> <span class="n">NumFieldElem</span>
 </code></pre></div>
-
 <p>Given an irreducible polynomial <script type="math/tex">f \in K[x]</script> over some number field <script type="math/tex">K</script>, this function creates the simple number field <script type="math/tex">L = K[x]/(x)</script> and returns <script type="math/tex">(L, b)</script>, where <script type="math/tex">b</script> is the class of <script type="math/tex">x</script> in <script type="math/tex">L</script>. The string <code>s</code> is used only for printing the primitive element <script type="math/tex">b</script>.</p>
 <p>Testing that <script type="math/tex">f</script> is irreducible can be disabled by setting the keyword argument <code>check</code> to <code>false</code>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">cyclotomic_field</span><span class="p">(</span><span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnticNumberField</span><span class="p">,</span> <span class="n">nf_elem</span>
 </code></pre></div>
-
 <p>The <script type="math/tex">n</script>-th cyclotomic field defined by the <script type="math/tex">n</script>-the cyclotomic polynomial.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">wildanger_field</span><span class="p">(</span><span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">fmpz</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnticNumberField</span><span class="p">,</span> <span class="n">nf_elem</span>
 </code></pre></div>
-
 <p>Returns the field with defining polynomial <script type="math/tex">x^n + \sum_{i=0}^{n-1} (-1)^{n-i}Bx^i</script>. These fields tend to have non-trivial class groups.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">radical_extension</span><span class="p">(</span><span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">a</span><span class="o">::</span><span class="n">NumFieldElem</span><span class="p">;</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;_$&quot;</span><span class="p">,</span>
                <span class="n">check</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">cached</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NumField</span><span class="p">,</span> <span class="n">NumFieldElem</span>
 </code></pre></div>
-
 <p>Given an element <script type="math/tex">a</script> of a number field <script type="math/tex">K</script> and an integer <script type="math/tex">n</script>, create the simple extension of <script type="math/tex">K</script> with the defining polynomial <script type="math/tex">x^n - a</script>.</p>
 <hr />
 <p>Many of the constructors have arguments of type <code>Symbol</code> or <code>AbstractString</code>, if used, they define the appearance in printing, and printing only. The named parameter <code>check</code> can be <code>true</code> or <code>false</code>, the default being <code>true</code>. This parameter controlls is the polynomial defining the number field is tested for irreducibility or not. Given that this can be potentially  very time consuming if the degree if large, one can disable this test. Note however, that the behaviour of Hecke is undefined if a reducible polynomial is used to define a <em>field</em>.</p>
@@ -787,7 +783,6 @@
 <span class="n">julia</span><span class="o">&gt;</span> <span class="n">K</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">NumberField</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">)</span>
 <span class="p">(</span><span class="kt">Number</span> <span class="n">field</span> <span class="n">over</span> <span class="kt">Rational</span> <span class="n">Field</span> <span class="n">with</span> <span class="n">defining</span> <span class="n">polynomial</span> <span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">10</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 </code></pre></div>
-
 </details>
 <p><a id='Creation-of-non-simple-number-fields'></a></p>
 <p><a id='Creation-of-non-simple-number-fields-1'></a></p>
@@ -796,7 +791,6 @@
 <div class="codehilite"><pre><span></span><code><span class="n">NumberField</span><span class="p">(</span><span class="n">f</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="n">PolyElem</span><span class="p">{</span><span class="o">&lt;:</span><span class="n">NumFieldElem</span><span class="p">}},</span> <span class="n">s</span><span class="o">::</span><span class="n">String</span><span class="o">=</span><span class="s">&quot;_</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">check</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
                                           <span class="o">-&gt;</span> <span class="n">NumField</span><span class="p">,</span> <span class="kt">Vector</span><span class="p">{</span><span class="n">NumFieldElem</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Given a list <script type="math/tex">f_1, \ldots, f_n</script> of univariate polynomials in <script type="math/tex">K[x]</script> over some number field <script type="math/tex">K</script>, constructs the extension <script type="math/tex">K[x_1, \ldots, x_n]/(f_1(x_1), \ldots, f_n(x_n))</script>.</p>
 <hr />
 <details class="note"><summary>Example</summary><div class="codehilite"><pre><span></span><code><span class="n">julia</span><span class="o">&gt;</span> <span class="n">Qx</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">FlintQQ</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">);</span>
@@ -810,7 +804,6 @@
 <span class="n">julia</span><span class="o">&gt;</span> <span class="n">minpoly</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">g</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">x</span><span class="o">^</span><span class="mi">4</span> <span class="o">-</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
 </code></pre></div>
-
 </details>
 <p><a id='Conversion'></a></p>
 <p><a id='Conversion-1'></a></p>
@@ -818,12 +811,10 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">absolute_field</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">NumField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NumField</span><span class="p">,</span> <span class="n">Map</span>
 </code></pre></div>
-
 <p>Given a number field <script type="math/tex">L</script>, this function returns an absolute simple number field <script type="math/tex">M/\mathbf{Q}</script> together with a <script type="math/tex">\mathbf{Q}</script>-linear isomorphism <script type="math/tex">M \to K</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">simple_extension</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">NonSimpleNumField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SimpleNumField</span><span class="p">,</span> <span class="n">Map</span>
 </code></pre></div>
-
 <p>Given a non-simple extension <script type="math/tex">L/K</script>, this function computes a simple extension <script type="math/tex">M/K</script> and a <script type="math/tex">K</script>-linear isomorphism <script type="math/tex">M \to L</script>.</p>
 <p><a id='Invariants'></a></p>
 <p><a id='Invariants-1'></a></p>
@@ -831,42 +822,34 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">basis</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">SimpleNumField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Vector</span><span class="p">{</span><span class="n">NumFieldElem</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Returns the canonical basis of a simple extension <script type="math/tex">L/K</script>, that is, the elements <script type="math/tex">1,a,\dotsc,a^{d - 1}</script>, where <script type="math/tex">d</script> is the degree of <script type="math/tex">K</script> and <script type="math/tex">a</script> the primitive element.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">basis</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">NonSimpleNumField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Vector</span><span class="p">{</span><span class="n">NumFieldElem</span><span class="p">}</span>
 </code></pre></div>
-
 <p>Returns the canonical basis of a non-simple extension <script type="math/tex">L/K</script>. If <script type="math/tex">L = K(a_1,\dotsc,a_n)</script> where each <script type="math/tex">a_i</script> has degree <script type="math/tex">d_i</script>, then the basis will be <script type="math/tex">a_1^{i_1}\dotsm a_d^{i_d}</script> with <script type="math/tex">0 \leq i_j d_j - 1</script> for <script type="math/tex">1 \leq j \leq n</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">issimple</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">NumField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Given a number field <script type="math/tex">L/K</script> this function returns whether <script type="math/tex">L</script> is simple, that is, whether <script type="math/tex">L/K</script> is defined by a univariate polynomial$.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">isabsolute</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">NumField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-
 <p>Returns whether <script type="math/tex">L</script> is an absolute extension, that is, whether the base field of <script type="math/tex">L</script> is <script type="math/tex">\mathbf{Q}</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">degree</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">NumField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
 </code></pre></div>
-
 <p>Given a number field <script type="math/tex">L/K</script>, this function returns the degree of <script type="math/tex">L</script> over <script type="math/tex">K</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">discriminant</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">SimpleNumField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NumFieldElem</span>
 </code></pre></div>
-
 <p>The discriminant of the defining polynomial of <script type="math/tex">L</script>, <em>not</em> the discriminant of the maximal order of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">absolute_discriminant</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">SimpleNumField</span><span class="p">,</span> <span class="n">QQ</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">fmpq</span>
 </code></pre></div>
-
 <p>The absolute discriminant of the defining polynomial of <script type="math/tex">L</script>, <em>not</em> the discriminant of the maximal order of <script type="math/tex">L</script>. This is the norm of the discriminant times the <script type="math/tex">d</script>-th power of the discriminant of the base field, where <script type="math/tex">d</script> is the degree of <script type="math/tex">L</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">defining_polynomial</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="n">SimpleNumField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PolyElem</span>
 </code></pre></div>
-
 <p>Given a simple number field <script type="math/tex">L/K</script>, constructed as <script type="math/tex">L = K[x]/(f)</script>, this function returns <script type="math/tex">f</script>.</p>
 <hr />
 <p><a id='Subfields'></a></p>
@@ -875,12 +858,10 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">issubfield</span><span class="p">(</span><span class="n">K</span><span class="o">::</span><span class="n">SimpleNumField</span><span class="p">,</span> <span class="n">L</span><span class="o">::</span><span class="n">SimpleNumField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">,</span> <span class="n">Map</span>
 </code></pre></div>
-
 <p>Returns <code>true</code> and an injection from <script type="math/tex">K</script> to <script type="math/tex">L</script> if <script type="math/tex">K</script> is a subfield of <script type="math/tex">L</script>. Otherwise the function returns <code>false</code> and a morphism mapping everything to <script type="math/tex">0</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">isisomorphic</span><span class="p">(</span><span class="n">K</span><span class="o">::</span><span class="n">SimpleNumField</span><span class="p">,</span> <span class="n">L</span><span class="o">::</span><span class="n">SimpleNumField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">,</span> <span class="n">Map</span>
 </code></pre></div>
-
 <p>Returns <code>true</code> and an isomorphism from <script type="math/tex">K</script> to <script type="math/tex">L</script> if <script type="math/tex">K</script> and <script type="math/tex">L</script> are isomorphic. Otherwise the function returns <code>false</code> and a morphism mapping everything to <script type="math/tex">0</script>.</p>
 <hr />
                 

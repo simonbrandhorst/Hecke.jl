@@ -794,7 +794,6 @@ basis_matrix
 julia&gt; E == Z_K
 true
 </code></pre></div>
-
 <p>Once orders are created, we can play with elements and ideals:</p>
 <div class="codehilite"><pre><span></span><code>julia&gt; lp = prime_decomposition(Z_K, 2)
 1-element Array{Tuple{NfAbsOrdIdl{AnticNumberField,nf_elem},Int64},1}:
@@ -818,7 +817,6 @@ julia&gt; fl, alpha = isprincipal(p^2)
 julia&gt; norm(alpha)
 4
 </code></pre></div>
-
 <p>It is possible to work with residue fields as well:</p>
 <div class="codehilite"><pre><span></span><code>julia&gt; Fp, mFp = ResidueField(Z_K, p)
 (Finite field of degree 1 over F_2, Map with following data
