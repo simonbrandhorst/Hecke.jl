@@ -962,7 +962,7 @@ true
 <div class="codehilite"><pre><span></span><code>tr(x::AbsAlgAssElem{T}) where T -&gt; T
 </code></pre></div>
 <blockquote>
-<p>Returns the trace of <script type="math/tex">a</script>.</p>
+<p>Returns the trace of <script type="math/tex">x</script>.</p>
 </blockquote>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfRelOrdIdl</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfOrdIdl</span>
@@ -970,8 +970,7 @@ true
 <p>Returns the norm of <script type="math/tex">a</script>.</p>
 <div class="codehilite"><pre><span></span><code>norm(a::NfRelOrdFracIdl{T, S}) -&gt; S
 </code></pre></div>
-<p>Returns the norm of <script type="math/tex">a</script>
-</p>
+<p>Returns the norm of <script type="math/tex">a</script>.</p>
 <div class="codehilite"><pre><span></span><code>norm(a::NfAbsOrdElem) -&gt; fmpz
 </code></pre></div>
 <p>Returns the norm of <script type="math/tex">a</script>.</p>
@@ -997,7 +996,7 @@ true
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">conjugates_arb</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">abs_tol</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Array</span><span class="p">{</span><span class="n">acb</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
 </code></pre></div>
-<p>Compute the the conjugates of <code>x</code> as elements of type <code>acb</code>. Recall that we order the complex conjugates <script type="math/tex">\sigma_{r+1}(x),...,\sigma_{r+2s}(x)</script> such that <script type="math/tex">\sigma_{i}(x) = \overline{\sigma_{i + s}(x)}</script> for <script type="math/tex">r + 2 \leq i \leq r + s</script>.</p>
+<p>Compute the conjugates of <code>x</code> as elements of type <code>acb</code>. Recall that we order the complex conjugates <script type="math/tex">\sigma_{r+1}(x),...,\sigma_{r+2s}(x)</script> such that <script type="math/tex">\sigma_{i}(x) = \overline{\sigma_{i + s}(x)}</script> for <script type="math/tex">r + 2 \leq i \leq r + s</script>.</p>
 <blockquote></blockquote>
 <p>Every entry <code>y</code> of the array returned satisfies <code>radius(real(y)) &lt; 2^-abs_tol</code>, <code>radius(imag(y)) &lt; 2^-abs_tol</code> respectively.</p>
 <hr />
@@ -1021,10 +1020,10 @@ true
 </blockquote>
 <div class="codehilite"><pre><span></span><code>minpoly(a::NfRelElem) -&gt; PolyElem
 </code></pre></div>
-<p>Given an element <script type="math/tex">a</script> in an extension <script type="math/tex">L/K</script>, this function returns the minimal polynomial of <script type="math/tex">a</script> of <script type="math/tex">K</script>.</p>
+<p>Given an element <script type="math/tex">a</script> in an extension <script type="math/tex">L/K</script>, this function returns the minimal polynomial of <script type="math/tex">a</script> over <script type="math/tex">K</script>.</p>
 <div class="codehilite"><pre><span></span><code>minpoly(a::NfAbsOrdElem) -&gt; fmpz_poly
 </code></pre></div>
-<p>The minimal polynomial of <script type="math/tex">a</script>.    </p>
+<p>The minimal polynomial of <script type="math/tex">a</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">charpoly</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">Y</span><span class="o">::</span><span class="n">Generic</span><span class="o">.</span><span class="n">MatrixElem</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="n">where</span> <span class="p">{</span><span class="n">T</span> <span class="o">&lt;:</span> <span class="n">RingElement</span><span class="p">}</span>
 </code></pre></div>
@@ -1035,7 +1034,7 @@ true
 
 charpoly(a::NfAbsOrdElem, FlintZZ) -&gt; fmpz_poly
 </code></pre></div>
-<p>The characteristic polynomial of <script type="math/tex">a</script>.    </p>
+<p>The characteristic polynomial of <script type="math/tex">a</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">factor</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Fac</span><span class="p">{</span><span class="n">NfOrdElem</span><span class="p">}</span>
 </code></pre></div>

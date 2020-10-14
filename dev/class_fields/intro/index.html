@@ -783,21 +783,19 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">ray_class_group</span><span class="p">(</span><span class="n">m</span><span class="o">::</span><span class="n">NfOrdIdl</span><span class="p">,</span> <span class="n">inf_plc</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">,</span> <span class="mi">1</span><span class="p">};</span> <span class="n">n_quo</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">lp</span><span class="o">::</span><span class="kt">Dict</span><span class="p">{</span><span class="n">NfOrdIdl</span><span class="p">,</span> <span class="kt">Int</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">GrpAbFinGen</span><span class="p">,</span> <span class="n">MapRayClassGrp</span>
 </code></pre></div>
-<p>Given an ideal m and a set of infinite places of <script type="math/tex">K</script>, this function returns the corresponding ray class group as an abstract group <script type="math/tex">\mathcal {Cl}_m</script> and a map going from the group into the group of ideals of <script type="math/tex">K</script> that are coprime to <script type="math/tex">m</script>. If <code>n_quo</code> is set, it will return the group modulo <code>n_quo</code>. The factorization of <script type="math/tex">m</script> can be given with the keyword argument <code>lp</code>.</p>
+<p>Given an ideal <script type="math/tex">m</script> and a set of infinite places of <script type="math/tex">K</script>, this function returns the corresponding ray class group as an abstract group <script type="math/tex">\mathcal {Cl}_m</script> and a map going from the group into the group of ideals of <script type="math/tex">K</script> that are coprime to <script type="math/tex">m</script>. If <code>n_quo</code> is set, it will return the group modulo <code>n_quo</code>. The factorization of <script type="math/tex">m</script> can be given with the keyword argument <code>lp</code>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">class_group</span><span class="p">(</span><span class="n">O</span><span class="o">::</span><span class="n">NfOrd</span><span class="p">;</span> <span class="n">bound</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">redo</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="n">large</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GrpAbFinGen</span><span class="p">,</span> <span class="n">Map</span>
 </code></pre></div>
-<p>Returns a group <script type="math/tex">A</script> and a map <script type="math/tex">f</script> from <script type="math/tex">A</script> to the set of ideals of <script type="math/tex">O</script>. The inverse of the map is the projection onto the group of ideals modulo the  group of principal ideals. \texttt{redo} allows to trigger a re-computation, thus avoiding the cache. \texttt{bound}, when given, is the bound for the factor base.</p>
+<p>Returns a group <script type="math/tex">A</script> and a map <script type="math/tex">f</script> from <script type="math/tex">A</script> to the set of ideals of <script type="math/tex">O</script>. The inverse of the map is the projection onto the group of ideals modulo the group of principal ideals. \texttt{redo} allows to trigger a re-computation, thus avoiding the cache. \texttt{bound}, when given, is the bound for the factor base.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">class_group</span><span class="p">(</span><span class="n">K</span><span class="o">::</span><span class="n">AnticNumberField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GrpAbFinGen</span><span class="p">,</span> <span class="n">Map</span>
 </code></pre></div>
 <p>Shortcut for <code>class_group(maximal_order(K))</code>: returns the class group as an abelian group and a map from this group to the set of ideals of the maximal order.</p>
-<hr />
-<div class="codehilite"><pre><span></span><code><span class="n">norm_group</span><span class="p">(</span><span class="n">f</span><span class="o">::</span><span class="n">Nemo</span><span class="o">.</span><span class="n">PolyElem</span><span class="p">,</span> <span class="n">mR</span><span class="o">::</span><span class="n">Hecke</span><span class="o">.</span><span class="n">MapRayClassGrp</span><span class="p">,</span> <span class="n">isabelian</span><span class="o">::</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="n">of_closure</span><span class="o">::</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Hecke</span><span class="o">.</span><span class="n">FinGenGrpAb</span><span class="p">,</span> <span class="n">Hecke</span><span class="o">.</span><span class="n">FinGenGrpAbMap</span>
-
-<span class="n">norm_group</span><span class="p">(</span><span class="n">f</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="n">PolyElem</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">},</span> <span class="n">mR</span><span class="o">::</span><span class="n">Hecke</span><span class="o">.</span><span class="n">MapRayClassGrp</span><span class="p">,</span> <span class="n">isabelian</span><span class="o">::</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="n">of_closure</span><span class="o">::</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Hecke</span><span class="o">.</span><span class="n">FinGenGrpAb</span><span class="p">,</span> <span class="n">Hecke</span><span class="o">.</span><span class="n">FinGenGrpAbMap</span>
-</code></pre></div>
-<p>Computes the subgroup of the Ray Class Group <script type="math/tex">R</script> given by the norm of the extension generated by a/the roots of the polynomials,  assuming they are irreducible. If <code>isabelian</code> is set to true, then the code assumes the field to be abelian, hence the algorithm stops when the quotient by the norm group has the correct order. Even though the algorithm is probabilistic by nature, in this case the result is guaranteed. If <code>of_closure</code> is given, then the norm group of the splitting field of the polynomial(s) is computed. It is the callers responsibility to ensure that the ray class group passed in is large enough.</p>
+<div class="admonition warning">
+<p class="admonition-title">Missing docstring.</p>
+<p>Missing docstring for <code>norm_group(f::Nemo.PolyElem, mR::Hecke.MapRayClassGrp, isabelian::Bool)</code>. Check Documenter's build log for details.</p>
+</div>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">norm_group</span><span class="p">(</span><span class="n">K</span><span class="o">::</span><span class="n">NfRel</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">},</span> <span class="n">mR</span><span class="o">::</span><span class="n">Hecke</span><span class="o">.</span><span class="n">MapRayClassGrp</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Hecke</span><span class="o">.</span><span class="n">FinGenGrpAb</span><span class="p">,</span> <span class="n">Hecke</span><span class="o">.</span><span class="n">FinGenGrpAbMap</span>
 
@@ -833,7 +831,7 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">ring_class_field</span><span class="p">(</span><span class="n">O</span><span class="o">::</span><span class="n">NfAbsOrd</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ClassField</span>
 </code></pre></div>
-<p>The ring class field of <script type="math/tex">O</script>, ie. the maximal abelian extension ramifed  only at primes dividing the conductor with the automorphism group isomorphic to the Picard group.</p>
+<p>The ring class field of <script type="math/tex">O</script>, i.e. the maximal abelian extension ramified only at primes dividing the conductor with the automorphism group isomorphic to the Picard group.</p>
 <h3 id="example">Example</h3>
 <div class="codehilite"><pre><span></span><code>julia&gt; Qx, x = PolynomialRing(FlintQQ, &quot;x&quot;);
 
@@ -879,7 +877,7 @@ Number field over Rational Field with defining polynomial x^2 - 10
  with defining polynomials AbstractAlgebra.Generic.MPoly{nf_elem}[1*_$1^2 + -2]
 with pseudo-basis
 (1, 1//1 * &lt;1, 1&gt;)
-(1*_$1 + a, 1//4 * &lt;2, a+2&gt;)
+(1*_$1 + a, 1//4 * &lt;2, a&gt;)
 
 julia&gt; isone(discriminant(ZK))
 true
@@ -887,7 +885,7 @@ true
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">ray_class_field</span><span class="p">(</span><span class="n">K</span><span class="o">::</span><span class="n">NfRel</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">ClassField</span>
 </code></pre></div>
-<p>For a (relative) abelian extension, compute an abstract representation as a class field. </p>
+<p>For a (relative) abelian extension, compute an abstract representation as a class field.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">genus_field</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">ClassField</span><span class="p">,</span> <span class="n">k</span><span class="o">::</span><span class="n">AnticNumberField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ClassField</span>
 </code></pre></div>
@@ -899,14 +897,14 @@ true
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">maximal_abelian_subfield</span><span class="p">(</span><span class="n">K</span><span class="o">::</span><span class="n">NfRel</span><span class="p">{</span><span class="n">nf_elem</span><span class="p">};</span> <span class="n">of_closure</span><span class="o">::</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ClassField</span>
 </code></pre></div>
-<p>Using a probabilistic algorithm for the norm group computation, determine tha maximal abelian subfield in <script type="math/tex">K</script> over its base field. If <code>of_closure</code> is set to true, then the algorithm is applied to the normal closure if <script type="math/tex">K</script> (without computing it).</p>
+<p>Using a probabilistic algorithm for the norm group computation, determine the maximal abelian subfield in <script type="math/tex">K</script> over its base field. If <code>of_closure</code> is set to true, then the algorithm is applied to the normal closure of <script type="math/tex">K</script> (without computing it).</p>
 <p><a id='Invariants'></a></p>
 <p><a id='Invariants-1'></a></p>
 <h2 id="invariants">Invariants</h2>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">degree</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">ClassField</span><span class="p">)</span>
 </code></pre></div>
-<p>The degree of <script type="math/tex">A</script> over its base field, ie. the size of the defining ideal group.</p>
+<p>The degree of <script type="math/tex">A</script> over its base field, i.e. the size of the defining ideal group.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">base_ring</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">ClassField</span><span class="p">)</span>
 </code></pre></div>
@@ -922,18 +920,19 @@ true
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">conductor</span><span class="p">(</span><span class="n">C</span><span class="o">::</span><span class="n">ClassField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfOrdIdl</span><span class="p">,</span> <span class="kt">Array</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>
 </code></pre></div>
-<p>Return the conductor of the abelian extension corresponding to C</p>
+<p>Return the conductor of the abelian extension corresponding to <script type="math/tex">C</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">defining_modulus</span><span class="p">(</span><span class="n">CF</span><span class="o">::</span><span class="n">ClassField</span><span class="p">)</span>
 </code></pre></div>
-<p>The modulus, ie. an ideal the the set of real places, used to create the class field.</p>
+<p>The modulus, i.e. an ideal of the set of real places, used to create the class field.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">iscyclic</span><span class="p">(</span><span class="n">C</span><span class="o">::</span><span class="n">ClassField</span><span class="p">)</span>
 </code></pre></div>
 <p>Tests if the (relative) automorphism group of <script type="math/tex">C</script> is cyclic (by checking the defining ideal group).</p>
 <hr />
-<p>isconductor(C::Hecke.ClassField, m::NfOrdIdl, inf_plc::Array{InfPlc,1}=InfPlc[]; check) -&gt; NfOrdIdl, Array{InfPlc,1}</p>
-<p>Checks if (m, inf_plc) is the conductor of the abelian extension corresponding to C. If check is false, it assumes that the  given modulus is a multiple of the conductor. This is usually faster than computing the conductor.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">isconductor</span><span class="p">(</span><span class="n">C</span><span class="o">::</span><span class="n">Hecke</span><span class="o">.</span><span class="n">ClassField</span><span class="p">,</span> <span class="n">m</span><span class="o">::</span><span class="n">NfOrdIdl</span><span class="p">,</span> <span class="n">inf_plc</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span><span class="o">=</span><span class="n">InfPlc</span><span class="p">[];</span> <span class="n">check</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfOrdIdl</span><span class="p">,</span> <span class="kt">Array</span><span class="p">{</span><span class="n">InfPlc</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>
+</code></pre></div>
+<p>Checks if (m, inf_plc) is the conductor of the abelian extension corresponding to <script type="math/tex">C</script>. If <code>check</code> is <code>false</code>, it assumes that the given modulus is a multiple of the conductor. This is usually faster than computing the conductor.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">isnormal</span><span class="p">(</span><span class="n">C</span><span class="o">::</span><span class="n">ClassField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
@@ -960,7 +959,7 @@ true
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">intersect</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">ClassField</span><span class="p">,</span> <span class="n">b</span><span class="o">::</span><span class="n">ClassField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ClassField</span>
 </code></pre></div>
-<p>The intersect of <script type="math/tex">a</script> and <script type="math/tex">b</script> as a class field.</p>
+<p>The intersection of <script type="math/tex">a</script> and <script type="math/tex">b</script> as a class field.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">prime_decomposition_type</span><span class="p">(</span><span class="n">C</span><span class="o">::</span><span class="n">ClassField</span><span class="p">,</span> <span class="n">p</span><span class="o">::</span><span class="n">NfAbsOrdIdl</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span>
 </code></pre></div>
@@ -968,7 +967,7 @@ true
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">issubfield</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">ClassField</span><span class="p">,</span> <span class="n">b</span><span class="o">::</span><span class="n">ClassField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
-<p>Determines of <script type="math/tex">a</script> is a subfield of <script type="math/tex">b</script>.</p>
+<p>Determines if <script type="math/tex">a</script> is a subfield of <script type="math/tex">b</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">islocal_norm</span><span class="p">(</span><span class="n">r</span><span class="o">::</span><span class="n">ClassField</span><span class="p">,</span> <span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
@@ -984,11 +983,11 @@ true
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">subfields</span><span class="p">(</span><span class="n">C</span><span class="o">::</span><span class="n">ClassField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Array</span><span class="p">{</span><span class="n">ClassField</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
 </code></pre></div>
-<p>Find all subfields of <script type="math/tex">C</script> as class fields.     Note: this will not find all subfields over <script type="math/tex">Q</script>, but only the ones sharing the same base field.</p>
+<p>Find all subfields of <script type="math/tex">C</script> as class fields. Note: this will not find all subfields over <script type="math/tex">Q</script>, but only the ones sharing the same base field.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">subfields</span><span class="p">(</span><span class="n">C</span><span class="o">::</span><span class="n">ClassField</span><span class="p">,</span> <span class="n">d</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Array</span><span class="p">{</span><span class="n">ClassField</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
 </code></pre></div>
-<p>Find all subfields of <script type="math/tex">C</script> of degree <script type="math/tex">d</script> as class fields.     Note: this will not find all subfields over <script type="math/tex">Q</script>, but only the ones sharing the same base field.</p>
+<p>Find all subfields of <script type="math/tex">C</script> of degree <script type="math/tex">d</script> as class fields. Note: this will not find all subfields over <script type="math/tex">Q</script>, but only the ones sharing the same base field.</p>
                 
               
               

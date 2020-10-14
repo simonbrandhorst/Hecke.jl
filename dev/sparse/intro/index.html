@@ -976,7 +976,7 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">sparse_matrix</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">MatElem</span><span class="p">;</span> <span class="n">keepzrows</span><span class="o">::</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
 </code></pre></div>
-<p>Constructs thesparse matrix corresponding to the dense matrix <script type="math/tex">A</script>. If <code>keepzrows</code> is false, then the constructor will drop any zero row of <script type="math/tex">A</script>.</p>
+<p>Constructs the sparse matrix corresponding to the dense matrix <script type="math/tex">A</script>. If <code>keepzrows</code> is false, then the constructor will drop any zero row of <script type="math/tex">A</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">sparse_matrix</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">A</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="n">T</span><span class="p">,</span> <span class="mi">2</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
 </code></pre></div>
@@ -1012,15 +1012,15 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">identity_matrix</span><span class="p">(</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="n">SMat</span><span class="p">},</span> <span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
 </code></pre></div>
-<p>Return a sparse <script type="math/tex">n</script> times <script type="math/tex">n</script> identity matrix over <script type="math/tex">R</script>.   </p>
+<p>Return a sparse <script type="math/tex">n</script> times <script type="math/tex">n</script> identity matrix over <script type="math/tex">R</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">zero_matrix</span><span class="p">(</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="n">SMat</span><span class="p">},</span> <span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
 </code></pre></div>
-<p>Return a sparse <script type="math/tex">n</script> times <script type="math/tex">n</script> zero matrix over <script type="math/tex">R</script>.   </p>
+<p>Return a sparse <script type="math/tex">n</script> times <script type="math/tex">n</script> zero matrix over <script type="math/tex">R</script>.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">zero_matrix</span><span class="p">(</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="n">SMat</span><span class="p">},</span> <span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">m</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
 </code></pre></div>
-<p>Return a sparse <script type="math/tex">n</script> times <script type="math/tex">m</script> zero matrix over <script type="math/tex">R</script>.   </p>
+<p>Return a sparse <script type="math/tex">n</script> times <script type="math/tex">m</script> zero matrix over <script type="math/tex">R</script>.</p>
 <p>Slices:</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">sub</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">,</span> <span class="n">r</span><span class="o">::</span><span class="kt">UnitRange</span><span class="p">,</span> <span class="n">c</span><span class="o">::</span><span class="kt">UnitRange</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
@@ -1059,7 +1059,7 @@
 </code></pre></div>
 <p>Tests if <script type="math/tex">A</script> is an identity matrix.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">isone</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="n">iszero</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span>
 </code></pre></div>
 <p>Tests if <script type="math/tex">A</script> is a zero matrix.</p>
 <p><a id='Manipulation/-Access'></a></p>
