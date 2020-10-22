@@ -768,7 +768,7 @@ julia&gt; O = MaximalOrder(K);
 <p>Returns a maximal order of <code>algera(O)</code> containing <script type="math/tex">O</script>.</p>
 </blockquote>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">lll</span><span class="p">(</span><span class="n">M</span><span class="o">::</span><span class="n">NfOrd</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfOrd</span>
+<div class="codehilite"><pre><span></span><code><span class="n">lll</span><span class="p">(</span><span class="n">M</span><span class="o">::</span><span class="n">NfAbsOrd</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfAbsOrd</span>
 </code></pre></div>
 <p>The same order, but with the basis now being LLL reduced wrt. the Minkowski metric.</p>
 <p>By Chistov's fundamental theorem, the computation of the maximal order is basically as hard as the factorisation of the discriminant. In order to help the computer, Hecke also provides the following signatures:</p>
