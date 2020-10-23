@@ -873,15 +873,15 @@ Class field defined mod (&lt;1, 1&gt;, InfPlc[]) of structure Abelian group with
 julia&gt; K = number_field(A)
 non-simple Relative number field over
 Number field over Rational Field with defining polynomial x^2 - 10
- with defining polynomials AbstractAlgebra.Generic.MPoly{nf_elem}[1*_$1^2 + -2]
+ with defining polynomials AbstractAlgebra.Generic.MPoly{nf_elem}[_$1^2 - 2]
 
 julia&gt; ZK = maximal_order(K)
 Relative maximal order of non-simple Relative number field over
 Number field over Rational Field with defining polynomial x^2 - 10
- with defining polynomials AbstractAlgebra.Generic.MPoly{nf_elem}[1*_$1^2 + -2]
+ with defining polynomials AbstractAlgebra.Generic.MPoly{nf_elem}[_$1^2 - 2]
 with pseudo-basis
 (1, 1//1 * &lt;1, 1&gt;)
-(1*_$1 + a, 1//4 * &lt;2, 3*a&gt;)
+(_$1 + a, 1//4 * &lt;2, a&gt;)
 
 julia&gt; isone(discriminant(ZK))
 true
