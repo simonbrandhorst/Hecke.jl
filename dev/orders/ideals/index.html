@@ -919,7 +919,7 @@ GrpAb: Z/9
 with components [2]
 
 julia&gt; mc(c[1])
-&lt;2, 7//2*_$^2 + 2*_$ + 1//2&gt;
+&lt;2, 5//2*_$^2 + 3*_$ + 5//2&gt;
 Norm: 2
 Minimum: 2
 two normal wrt: 2
@@ -928,7 +928,7 @@ julia&gt; order(c[1])
 9
 
 julia&gt; mc(c[1])^Int(order(c[1]))
-&lt;512, 48778768008944312042281//2*_$^2 - 24206243073821420343184*_$ + 52810618909468316764975//2&gt;
+&lt;512, 3841890434207041111259//2*_$^2 - 1906520757071039470059*_$ + 4159445182699902036047//2&gt;
 Norm: 512
 two normal wrt: 2
 
@@ -965,7 +965,7 @@ with components [0]
 </code></pre></div>
 <p>Finds a number field element <script type="math/tex">\alpha</script> such that <script type="math/tex">\alpha I</script> factors over the factor base in <script type="math/tex">c</script>.</p>
 <div class="codehilite"><pre><span></span><code>julia&gt; I = mc(c[1])
-&lt;2, 7//2*_$^2 + 2*_$ + 1//2&gt;
+&lt;2, 5//2*_$^2 + 3*_$ + 5//2&gt;
 Norm: 2
 Minimum: 2
 two normal wrt: 2
@@ -974,7 +974,7 @@ julia&gt; Hecke.isprincipal(I)
 (false, 1)
 
 julia&gt; I = I^Int(order(c[1]))
-&lt;512, 48778768008944312042281//2*_$^2 - 24206243073821420343184*_$ + 52810618909468316764975//2&gt;
+&lt;512, 3841890434207041111259//2*_$^2 - 1906520757071039470059*_$ + 4159445182699902036047//2&gt;
 Norm: 512
 two normal wrt: 2
 
@@ -1013,7 +1013,7 @@ with basis nf_elem[1, _$, 1//2*_$^2 + 1//2]
 )
 
 julia&gt; mu(u[2])
-_$ - 12
+_$^2 - _$ + 1
 
 julia&gt; u, mu = unit_group_fac_elem(zk)
 (GrpAb: Z/2 x Z, UnitGroup map of Factored elements over Number field over Rational Field with defining polynomial x^3 - 13*x^2 + 13*x - 13
@@ -1021,16 +1021,16 @@ julia&gt; u, mu = unit_group_fac_elem(zk)
 
 julia&gt; mu(u[2])
 Factored element with data
-Dict(_$ + 5 =&gt; 1,_$^2 + 1 =&gt; -1,7 =&gt; 1,-2*_$^2 + 25*_$ - 33 =&gt; -1,_$^2 - 2*_$ - 2 =&gt; -1,2 =&gt; 1,1//2*_$^2 - 6*_$ - 23//2 =&gt; 1)
+Dict(_$^2 + 1 =&gt; 1,61*_$^2 - 767*_$ + 829 =&gt; 1,_$ - 16 =&gt; -1,_$ - 4 =&gt; 1,1//2*_$^2 - 6*_$ + 7//2 =&gt; -1,73//2*_$^2 - 475*_$ + 371//2 =&gt; -1)
 
 julia&gt; evaluate(ans)
-_$ - 12
+_$^2 - _$ + 1
 
 julia&gt; lp = factor(6*zk)
 Dict{NfAbsOrdIdl{AnticNumberField,nf_elem},Int64} with 4 entries:
   &lt;3, _$^2 + 1&gt;                =&gt; 1
-  &lt;2, 1//2*_$^2 + 3*_$ + 1//2&gt; =&gt; 1
-  &lt;2, 5//2*_$^2 + 1//2&gt;        =&gt; 2
+  &lt;2, 3//2*_$^2 + 3*_$ + 7//2&gt; =&gt; 1
+  &lt;2, 3//2*_$^2 + 3//2&gt;        =&gt; 2
   &lt;3, _$ - 1&gt;                  =&gt; 1
 
 julia&gt; s, ms = Hecke.sunit_group(collect(keys(lp)))
@@ -1039,12 +1039,12 @@ Norm: 9
 Minimum: 3
 basis_matrix
 [3 0 0; 0 3 0; 0 0 1]
-two normal wrt: 3, &lt;2, 1//2*_$^2 + 3*_$ + 1//2&gt;
+two normal wrt: 3, &lt;2, 3//2*_$^2 + 3*_$ + 7//2&gt;
 Norm: 2
 Minimum: 2
 basis_matrix
 [2 0 0; 1 1 0; 1 0 1]
-two normal wrt: 2, &lt;2, 5//2*_$^2 + 1//2&gt;
+two normal wrt: 2, &lt;2, 3//2*_$^2 + 3//2&gt;
 Norm: 2
 Minimum: 2
 basis_matrix
