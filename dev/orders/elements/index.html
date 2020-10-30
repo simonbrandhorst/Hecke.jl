@@ -739,14 +739,9 @@
 <p><a id='Basic-properties-1'></a></p>
 <h2 id="basic-properties">Basic properties</h2>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">parent</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfOrd</span>
+<div class="codehilite"><pre><span></span><code><span class="n">parent</span><span class="p">(</span><span class="n">g</span><span class="o">::</span><span class="n">Perm</span><span class="p">)</span>
 </code></pre></div>
-<p>Returns the order of which <script type="math/tex">a</script> is an element.</p>
-<div class="codehilite"><pre><span></span><code>parent(g::Perm)
-</code></pre></div>
-<blockquote>
 <p>Return the parent of the permutation <code>g</code>.</p>
-</blockquote>
 <div class="codehilite"><pre><span></span><code>julia&gt; G = SymmetricGroup(5); g = Perm([3,4,5,2,1])
 (1,3,5)(2,4)
 
@@ -755,14 +750,13 @@ true
 </code></pre></div>
 <div class="codehilite"><pre><span></span><code>parent(a::AbstractAlgebra.MatElem{T}, cached::Bool = true) where T &lt;: RingElement
 </code></pre></div>
-<blockquote>
 <p>Return the parent object of the given matrix.</p>
-</blockquote>
 <div class="codehilite"><pre><span></span><code>parent(a::AbstractAlgebra.MatAlgElem{T}, cached::Bool = true) where T &lt;: RingElement
 </code></pre></div>
-<blockquote>
 <p>Return the parent object of the given matrix.</p>
-</blockquote>
+<div class="codehilite"><pre><span></span><code>parent(a::NfAbsOrdElem) -&gt; NfOrd
+</code></pre></div>
+<p>Returns the order of which <script type="math/tex">a</script> is an element.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">elem_in_nf</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">nf_elem</span>
 </code></pre></div>
@@ -793,14 +787,12 @@ true
 </code></pre></div>
 <p>Returns the one element of <script type="math/tex">\mathcal O</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">iszero</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfOrd</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+<div class="codehilite"><pre><span></span><code><span class="n">iszero</span><span class="p">(</span><span class="n">v</span><span class="o">::</span><span class="n">AbstractAlgebra</span><span class="o">.</span><span class="n">FPModuleElem</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="n">where</span> <span class="n">T</span> <span class="o">&lt;:</span> <span class="n">RingElement</span>
+</code></pre></div>
+<p>Return true if <script type="math/tex">v</script> is the zero element of the module <script type="math/tex">M</script>.</p>
+<div class="codehilite"><pre><span></span><code>iszero(a::NfOrd) -&gt; Bool
 </code></pre></div>
 <p>Tests if <script type="math/tex">a</script> is zero.</p>
-<div class="codehilite"><pre><span></span><code>iszero(v::AbstractAlgebra.FPModuleElem{T}) where T &lt;: RingElement
-</code></pre></div>
-<blockquote>
-<p>Return true if <script type="math/tex">v</script> is the zero element of the module <script type="math/tex">M</script>.</p>
-</blockquote>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">isone</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfOrd</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
@@ -809,7 +801,58 @@ true
 <p><a id='Arithmetic-1'></a></p>
 <h2 id="arithmetic">Arithmetic</h2>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfAbsOrdElem</span>
+<div class="codehilite"><pre><span></span><code><span class="o">-</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">AbstractAlgebra</span><span class="o">.</span><span class="n">ResElem</span><span class="p">{</span><span class="n">T</span><span class="p">},</span> <span class="n">b</span><span class="o">::</span><span class="n">AbstractAlgebra</span><span class="o">.</span><span class="n">ResElem</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="n">where</span> <span class="p">{</span><span class="n">T</span> <span class="o">&lt;:</span> <span class="n">RingElement</span><span class="p">}</span>
+</code></pre></div>
+<p>Return <script type="math/tex">a - b</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.ResElem{T}, b::T) where {T &lt;: RingElem}
+</code></pre></div>
+<p>Return <script type="math/tex">a - b</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(a::T, b::AbstractAlgebra.ResElem{T}) where {T &lt;: RingElem}
+</code></pre></div>
+<p>Return <script type="math/tex">a - b</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.ResFieldElem{T}, b::AbstractAlgebra.ResFieldElem{T}) where {T &lt;: RingElement}
+</code></pre></div>
+<p>Return <script type="math/tex">a - b</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.ResFieldElem{T}, b::T) where {T &lt;: RingElem}
+</code></pre></div>
+<p>Return <script type="math/tex">a - b</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(a::T, b::AbstractAlgebra.ResFieldElem{T}) where {T &lt;: RingElem}
+</code></pre></div>
+<p>Return <script type="math/tex">a - b</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.PolyElem{T}, b::AbstractAlgebra.PolyElem{T}) where {T &lt;: RingElement}
+</code></pre></div>
+<p>Return <script type="math/tex">a - b</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.NCPolyElem{T}, b::AbstractAlgebra.NCPolyElem{T}) where {T &lt;: NCRingElem}
+</code></pre></div>
+<p>Return <script type="math/tex">a - b</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.RelSeriesElem{T}, b::AbstractAlgebra.RelSeriesElem{T}) where {T &lt;: RingElement}
+</code></pre></div>
+<p>Return <script type="math/tex">a - b</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.AbsSeriesElem{T}, b::AbstractAlgebra.AbsSeriesElem{T}) where {T &lt;: RingElement}
+</code></pre></div>
+<p>Return <script type="math/tex">a - b</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(a::Generic.LaurentSeriesElem{T}, b::Generic.LaurentSeriesElem{T}) where {T &lt;: RingElement}
+</code></pre></div>
+<p>Return <script type="math/tex">a - b</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(x::Generic.MatrixElem{T}, y::Generic.MatrixElem{T}) where {T &lt;: RingElement}
+</code></pre></div>
+<p>Return <script type="math/tex">x - y</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(x::T, y::Generic.MatrixElem{T}) where {T &lt;: RingElem}
+</code></pre></div>
+<p>Return <script type="math/tex">S(x) - y</script> where <script type="math/tex">S</script> is the parent of <script type="math/tex">y</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(x::Generic.MatrixElem{T}, y::T) where {T &lt;: RingElem}
+</code></pre></div>
+<p>Return <script type="math/tex">x - S(y)</script>, where <script type="math/tex">S</script> is the parent of <script type="math/tex">a</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.FracElem{T}, b::AbstractAlgebra.FracElem{T}) where {T &lt;: RingElem}
+</code></pre></div>
+<p>Return <script type="math/tex">a - b</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.FracElem{T}, b::T) where {T &lt;: RingElem}
+</code></pre></div>
+<p>Return <script type="math/tex">a - b</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(a::T, b::AbstractAlgebra.FracElem{T}) where {T &lt;: RingElem}
+</code></pre></div>
+<p>Return <script type="math/tex">a - b</script>.</p>
+<div class="codehilite"><pre><span></span><code>-(x::NfAbsOrdElem) -&gt; NfAbsOrdElem
 </code></pre></div>
 <p>Returns the additive inverse of <script type="math/tex">x</script>.</p>
 <div class="codehilite"><pre><span></span><code><span class="o">-</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
@@ -832,91 +875,6 @@ true
 <p>Return <script type="math/tex">a - b</script>.</p>
 </blockquote>
 <div class="codehilite"><pre><span></span><code>-(a::AlgMatElem, b::AlgMatElem) -&gt; AlgMatElem
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.ResElem{T}, b::AbstractAlgebra.ResElem{T}) where {T &lt;: RingElement}
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.ResElem{T}, b::T) where {T &lt;: RingElem}
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::T, b::AbstractAlgebra.ResElem{T}) where {T &lt;: RingElem}
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.ResFieldElem{T}, b::AbstractAlgebra.ResFieldElem{T}) where {T &lt;: RingElement}
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.ResFieldElem{T}, b::T) where {T &lt;: RingElem}
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::T, b::AbstractAlgebra.ResFieldElem{T}) where {T &lt;: RingElem}
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.PolyElem{T}, b::AbstractAlgebra.PolyElem{T}) where {T &lt;: RingElement}
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.NCPolyElem{T}, b::AbstractAlgebra.NCPolyElem{T}) where {T &lt;: NCRingElem}
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.RelSeriesElem{T}, b::AbstractAlgebra.RelSeriesElem{T}) where {T &lt;: RingElement}
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.AbsSeriesElem{T}, b::AbstractAlgebra.AbsSeriesElem{T}) where {T &lt;: RingElement}
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::Generic.LaurentSeriesElem{T}, b::Generic.LaurentSeriesElem{T}) where {T &lt;: RingElement}
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(x::Generic.MatrixElem{T}, y::Generic.MatrixElem{T}) where {T &lt;: RingElement}
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">x - y</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(x::T, y::Generic.MatrixElem{T}) where {T &lt;: RingElem}
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">S(x) - y</script> where <script type="math/tex">S</script> is the parent of <script type="math/tex">y</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(x::Generic.MatrixElem{T}, y::T) where {T &lt;: RingElem}
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">x - S(y)</script>, where <script type="math/tex">S</script> is the parent of <script type="math/tex">a</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.FracElem{T}, b::AbstractAlgebra.FracElem{T}) where {T &lt;: RingElem}
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.FracElem{T}, b::T) where {T &lt;: RingElem}
-</code></pre></div>
-<blockquote>
-<p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>-(a::T, b::AbstractAlgebra.FracElem{T}) where {T &lt;: RingElem}
 </code></pre></div>
 <blockquote>
 <p>Return <script type="math/tex">a - b</script>.</p>
@@ -1012,33 +970,27 @@ true
 </code></pre></div>
 <p>Return the <script type="math/tex">T_2</script>-norm of <script type="math/tex">x</script>. The radius of the result will be less than <code>2^-abs_tol</code>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">minpoly</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfRelElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PolyElem</span>
+<div class="codehilite"><pre><span></span><code><span class="n">minpoly</span><span class="p">(</span><span class="n">S</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">M</span><span class="o">::</span><span class="n">MatElem</span><span class="p">{</span><span class="n">T</span><span class="p">},</span> <span class="n">charpoly_only</span><span class="o">::</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="n">where</span> <span class="p">{</span><span class="n">T</span> <span class="o">&lt;:</span> <span class="n">RingElement</span><span class="p">}</span>
+</code></pre></div>
+<p>Return the minimal polynomial <script type="math/tex">p</script> of the matrix <script type="math/tex">M</script>. The polynomial ring <script type="math/tex">S</script> of the resulting polynomial must be supplied and the matrix must be square.</p>
+<div class="codehilite"><pre><span></span><code>minpoly(S::Ring, M::MatAlgElem{T}, charpoly_only::Bool = false) where {T &lt;: RingElement}
+</code></pre></div>
+<p>Return the minimal polynomial <script type="math/tex">p</script> of the matrix <script type="math/tex">M</script>. The polynomial ring <script type="math/tex">S</script> of the resulting polynomial must be supplied and the matrix must be square.</p>
+<div class="codehilite"><pre><span></span><code>minpoly(a::NfRelElem) -&gt; PolyElem
 </code></pre></div>
 <p>Given an element <script type="math/tex">a</script> in an extension <script type="math/tex">L/K</script>, this function returns the minimal polynomial of <script type="math/tex">a</script> over <script type="math/tex">K</script>.</p>
 <div class="codehilite"><pre><span></span><code>minpoly(a::NfAbsOrdElem) -&gt; fmpz_poly
 </code></pre></div>
 <p>The minimal polynomial of <script type="math/tex">a</script>.</p>
-<div class="codehilite"><pre><span></span><code>minpoly(S::Ring, M::MatElem{T}, charpoly_only::Bool = false) where {T &lt;: RingElement}
-</code></pre></div>
-<blockquote>
-<p>Return the minimal polynomial <script type="math/tex">p</script> of the matrix <script type="math/tex">M</script>. The polynomial ring <script type="math/tex">S</script> of the resulting polynomial must be supplied and the matrix must be square.</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>minpoly(S::Ring, M::MatAlgElem{T}, charpoly_only::Bool = false) where {T &lt;: RingElement}
-</code></pre></div>
-<blockquote>
-<p>Return the minimal polynomial <script type="math/tex">p</script> of the matrix <script type="math/tex">M</script>. The polynomial ring <script type="math/tex">S</script> of the resulting polynomial must be supplied and the matrix must be square.</p>
-</blockquote>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">charpoly</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">fmpz_poly</span>
+<div class="codehilite"><pre><span></span><code><span class="n">charpoly</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">Y</span><span class="o">::</span><span class="n">Generic</span><span class="o">.</span><span class="n">MatrixElem</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="n">where</span> <span class="p">{</span><span class="n">T</span> <span class="o">&lt;:</span> <span class="n">RingElement</span><span class="p">}</span>
+</code></pre></div>
+<p>Return the characteristic polynomial <script type="math/tex">p</script> of the matrix <script type="math/tex">M</script>. The polynomial ring <script type="math/tex">R</script> of the resulting polynomial must be supplied and the matrix is assumed to be square.</p>
+<div class="codehilite"><pre><span></span><code>charpoly(a::NfAbsOrdElem) -&gt; fmpz_poly
 
-<span class="n">charpoly</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">FlintZZ</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">fmpz_poly</span>
+charpoly(a::NfAbsOrdElem, FlintZZ) -&gt; fmpz_poly
 </code></pre></div>
 <p>The characteristic polynomial of <script type="math/tex">a</script>.</p>
-<div class="codehilite"><pre><span></span><code>charpoly(V::Ring, Y::Generic.MatrixElem{T}) where {T &lt;: RingElement}
-</code></pre></div>
-<blockquote>
-<p>Return the characteristic polynomial <script type="math/tex">p</script> of the matrix <script type="math/tex">M</script>. The polynomial ring <script type="math/tex">R</script> of the resulting polynomial must be supplied and the matrix is assumed to be square.</p>
-</blockquote>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">factor</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Fac</span><span class="p">{</span><span class="n">NfOrdElem</span><span class="p">}</span>
 </code></pre></div>
