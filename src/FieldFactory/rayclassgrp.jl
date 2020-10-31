@@ -496,6 +496,16 @@ function ray_class_group_quo(O::NfOrd, m::Int, wprimes::Dict{NfOrdIdl,Int}, inf_
     end
   end
   I.minimum = minI
+
+  if has_princ_gen_special(I) && has_minimum(I)
+    if I.princ_gen_special[2]+I.princ_gen_special[3] != I.minimum
+      @show I
+      @show I.princ_gen_special
+      @show I.minimum
+      @assert false
+    end
+  end
+
   return ray_class_group_quo(I, d1, wprimes, inf_plc, ctx, GRH = GRH)
   
 end
