@@ -13,7 +13,7 @@
         <meta name="author" content="Tommy Hofmann">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.1">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.2">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.1d1f224e.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.19190aaf.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.24b84193.min.css">
@@ -771,9 +771,7 @@ true
 <p>Returns the discriminant of the family <script type="math/tex">B</script>.</p>
 <div class="codehilite"><pre><span></span><code>discriminant(O::AlgssRelOrd)
 </code></pre></div>
-<blockquote>
 <p>Returns the discriminant of <script type="math/tex">O</script>.</p>
-</blockquote>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="o">==</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 </code></pre></div>
@@ -866,19 +864,13 @@ true
 <p>Returns the negative of <script type="math/tex">A</script>.</p>
 <div class="codehilite"><pre><span></span><code>-(a::AbsAlgAssElem) -&gt; AbsAlgAssElem
 </code></pre></div>
-<blockquote>
 <p>Returns <script type="math/tex">-a</script>.</p>
-</blockquote>
 <div class="codehilite"><pre><span></span><code>-(a::AbsAlgAssElem, b::AbsAlgAssElem) -&gt; AbsAlgAssElem
 </code></pre></div>
-<blockquote>
 <p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
 <div class="codehilite"><pre><span></span><code>-(a::AlgMatElem, b::AlgMatElem) -&gt; AlgMatElem
 </code></pre></div>
-<blockquote>
 <p>Return <script type="math/tex">a - b</script>.</p>
-</blockquote>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="o">+</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfAbsOrdElem</span>
 </code></pre></div>
@@ -923,9 +915,7 @@ true
 <p>Returns the trace of <script type="math/tex">a</script>.</p>
 <div class="codehilite"><pre><span></span><code>tr(x::AbsAlgAssElem{T}) where T -&gt; T
 </code></pre></div>
-<blockquote>
 <p>Returns the trace of <script type="math/tex">x</script>.</p>
-</blockquote>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfRelOrdIdl</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfOrdIdl</span>
 </code></pre></div>
@@ -938,15 +928,11 @@ true
 <p>Returns the norm of <script type="math/tex">a</script>.</p>
 <div class="codehilite"><pre><span></span><code>norm(a::AlgAssAbsOrdIdl, O::AlgAssAbsOrd; copy::Bool = true) -&gt; fmpq
 </code></pre></div>
-<blockquote>
 <p>Returns the norm of <script type="math/tex">a</script> considered as an (possibly fractional) ideal of <script type="math/tex">O</script>.</p>
-</blockquote>
 <div class="codehilite"><pre><span></span><code>norm(a::AlgAssRelOrdIdl{S, T, U}, O::AlgAssRelOrd{S, T, U}; copy::Bool = true)
   where { S, T, U } -&gt; T
 </code></pre></div>
-<blockquote>
 <p>Returns the norm of <script type="math/tex">a</script> considered as an (possibly fractional) ideal of <script type="math/tex">O</script>.</p>
-</blockquote>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">rand</span><span class="p">(</span><span class="n">O</span><span class="o">::</span><span class="n">NfOrd</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="kt">Integer</span><span class="p">,</span> <span class="n">fmpz</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">NfAbsOrdElem</span>
 </code></pre></div>
@@ -959,7 +945,6 @@ true
 <div class="codehilite"><pre><span></span><code><span class="n">conjugates_arb</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">abs_tol</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Array</span><span class="p">{</span><span class="n">acb</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
 </code></pre></div>
 <p>Compute the conjugates of <code>x</code> as elements of type <code>acb</code>. Recall that we order the complex conjugates <script type="math/tex">\sigma_{r+1}(x),...,\sigma_{r+2s}(x)</script> such that <script type="math/tex">\sigma_{i}(x) = \overline{\sigma_{i + s}(x)}</script> for <script type="math/tex">r + 2 \leq i \leq r + s</script>.</p>
-<blockquote></blockquote>
 <p>Every entry <code>y</code> of the array returned satisfies <code>radius(real(y)) &lt; 2^-abs_tol</code>, <code>radius(imag(y)) &lt; 2^-abs_tol</code> respectively.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">conjugates_arb_log</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">abs_tol</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Array</span><span class="p">{</span><span class="n">arb</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
@@ -987,7 +972,6 @@ true
 </code></pre></div>
 <p>Return the characteristic polynomial <script type="math/tex">p</script> of the matrix <script type="math/tex">M</script>. The polynomial ring <script type="math/tex">R</script> of the resulting polynomial must be supplied and the matrix is assumed to be square.</p>
 <div class="codehilite"><pre><span></span><code>charpoly(a::NfAbsOrdElem) -&gt; fmpz_poly
-
 charpoly(a::NfAbsOrdElem, FlintZZ) -&gt; fmpz_poly
 </code></pre></div>
 <p>The characteristic polynomial of <script type="math/tex">a</script>.</p>

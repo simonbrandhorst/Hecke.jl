@@ -13,7 +13,7 @@
         <meta name="author" content="Tommy Hofmann">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.1">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.2">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.1d1f224e.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.19190aaf.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.24b84193.min.css">
@@ -881,7 +881,7 @@ Number field over Rational Field with defining polynomial x^2 - 10
  with defining polynomials AbstractAlgebra.Generic.MPoly{nf_elem}[_$1^2 - 2]
 with pseudo-basis
 (1, 1//1 * &lt;1, 1&gt;)
-(_$1 + a, 1//4 * &lt;2, a&gt;)
+(_$1 + a, 1//4 * &lt;2, 3*a&gt;)
 
 julia&gt; isone(discriminant(ZK))
 true
@@ -949,13 +949,13 @@ true
 <p><a id='Operations-1'></a></p>
 <h2 id="operations">Operations</h2>
 <hr />
-<p>*(A::ClassField, B::ClassField) -&gt; ClassField The compositum of <script type="math/tex">a</script> and <script type="math/tex">b</script> as a (formal) class field.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">*</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">ClassField</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">ClassField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ClassField</span>
+</code></pre></div>
+<p>The compositum of <script type="math/tex">a</script> and <script type="math/tex">b</script> as a (formal) class field.</p>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">compositum</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">ClassField</span><span class="p">,</span> <span class="n">b</span><span class="o">::</span><span class="n">ClassField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ClassField</span>
 </code></pre></div>
-<blockquote>
 <p>The compositum of <script type="math/tex">a</script> and <script type="math/tex">b</script> as a (formal) class field.</p>
-</blockquote>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="o">==</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">ClassField</span><span class="p">,</span> <span class="n">b</span><span class="o">::</span><span class="n">ClassField</span><span class="p">)</span>
 </code></pre></div>

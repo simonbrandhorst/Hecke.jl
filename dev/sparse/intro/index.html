@@ -13,7 +13,7 @@
         <meta name="author" content="Tommy Hofmann">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.1">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.2">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.1d1f224e.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.19190aaf.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.24b84193.min.css">
@@ -872,15 +872,11 @@
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">sparse_row</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">J</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="kt">Tuple</span><span class="p">{</span><span class="kt">Int</span><span class="p">,</span> <span class="n">T</span><span class="p">}})</span> <span class="o">-&gt;</span> <span class="n">SRow</span><span class="p">{</span><span class="n">T</span><span class="p">}</span>
 </code></pre></div>
-<blockquote>
 <p>Constructs the sparse row <script type="math/tex">(a_i)_i</script> with <script type="math/tex">a_{i_j} = x_j</script>, where <script type="math/tex">J = (i_j, x_j)_j</script>. The elements <script type="math/tex">x_i</script> must belong to the ring <script type="math/tex">R</script>.</p>
-</blockquote>
 <hr />
 <div class="codehilite"><pre><span></span><code><span class="n">sparse_row</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">J</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="kt">Tuple</span><span class="p">{</span><span class="kt">Int</span><span class="p">,</span> <span class="n">T</span><span class="p">}})</span> <span class="o">-&gt;</span> <span class="n">SRow</span><span class="p">{</span><span class="n">T</span><span class="p">}</span>
 </code></pre></div>
-<blockquote>
 <p>Constructs the sparse row <script type="math/tex">(a_i)_i</script> with <script type="math/tex">a_{i_j} = x_j</script>, where <script type="math/tex">J = (i_j, x_j)_j</script>. The elements <script type="math/tex">x_i</script> must belong to the ring <script type="math/tex">R</script>.</p>
-</blockquote>
 <div class="codehilite"><pre><span></span><code>sparse_row(R::Ring, J::Vector{Tuple{Int, Int}}) -&gt; SRow
 </code></pre></div>
 <p>Constructs the sparse row <script type="math/tex">(a_i)_i</script> over <script type="math/tex">R</script> with <script type="math/tex">a_{i_j} = x_j</script>, where <script type="math/tex">J = (i_j, x_j)_j</script>.</p>
