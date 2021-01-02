@@ -48,6 +48,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+    
     
       
     
@@ -921,95 +923,75 @@
 <p><a id='Creation-1'></a></p>
 <h3 id="creation">Creation</h3>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">sparse_row</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">J</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="kt">Tuple</span><span class="p">{</span><span class="kt">Int</span><span class="p">,</span> <span class="n">T</span><span class="p">}})</span> <span class="o">-&gt;</span> <span class="n">SRow</span><span class="p">{</span><span class="n">T</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">sparse_row(R::Ring, J::Vector{Tuple{Int, T}}) -&gt; SRow{T}</code></pre>
 <p>Constructs the sparse row <script type="math/tex">(a_i)_i</script> with <script type="math/tex">a_{i_j} = x_j</script>, where <script type="math/tex">J = (i_j, x_j)_j</script>. The elements <script type="math/tex">x_i</script> must belong to the ring <script type="math/tex">R</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">sparse_row</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">J</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="kt">Tuple</span><span class="p">{</span><span class="kt">Int</span><span class="p">,</span> <span class="n">T</span><span class="p">}})</span> <span class="o">-&gt;</span> <span class="n">SRow</span><span class="p">{</span><span class="n">T</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">sparse_row(R::Ring, J::Vector{Tuple{Int, T}}) -&gt; SRow{T}</code></pre>
 <p>Constructs the sparse row <script type="math/tex">(a_i)_i</script> with <script type="math/tex">a_{i_j} = x_j</script>, where <script type="math/tex">J = (i_j, x_j)_j</script>. The elements <script type="math/tex">x_i</script> must belong to the ring <script type="math/tex">R</script>.</p>
-<div class="codehilite"><pre><span></span><code>sparse_row(R::Ring, J::Vector{Tuple{Int, Int}}) -&gt; SRow
-</code></pre></div>
+<pre class="highlight"><code>sparse_row(R::Ring, J::Vector{Tuple{Int, Int}}) -&gt; SRow</code></pre>
 <p>Constructs the sparse row <script type="math/tex">(a_i)_i</script> over <script type="math/tex">R</script> with <script type="math/tex">a_{i_j} = x_j</script>, where <script type="math/tex">J = (i_j, x_j)_j</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">sparse_row</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">J</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="kt">Int</span><span class="p">},</span> <span class="n">V</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">SRow</span><span class="p">{</span><span class="n">T</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">sparse_row(R::Ring, J::Vector{Int}, V::Vector{T}) -&gt; SRow{T}</code></pre>
 <p>Constructs the sparse row <script type="math/tex">(a_i)_i</script> over <script type="math/tex">R</script> with <script type="math/tex">a_{i_j} = x_j</script>, where <script type="math/tex">J = (i_j)_j</script> and <script type="math/tex">V = (x_j)_j</script>.</p>
 <p><a id='Basic-operations'></a></p>
 <p><a id='Basic-operations-1'></a></p>
 <h3 id="basic-operations">Basic operations</h3>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">==</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">SRow</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">SRow</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">==(x::SRow, y::SRow)</code></pre>
 <p>Checks whether <script type="math/tex">x</script> and <script type="math/tex">y</script> are the same sparse row, that is, whether <script type="math/tex">x</script> and <script type="math/tex">y</script> have the same non-zero entries.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">+</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SRow</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">SRow</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SRow</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">+(A::SRow, B::SRow) -&gt; SRow</code></pre>
 <p>Returns the sum of <script type="math/tex">A</script> and <script type="math/tex">B</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">getindex</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SRow</span><span class="p">,</span> <span class="n">j</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RingElem</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">getindex(A::SRow, j::Int) -&gt; RingElem</code></pre>
 <p>Given a sparse row <script type="math/tex">(a_i)_{i}</script> and an index <script type="math/tex">j</script> return <script type="math/tex">a_j</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">::</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="o">::</span><span class="n">SRow</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">SRow</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">*(b::T, A::SRow{T}) -&gt; SRow</code></pre>
 <p>Return the sparse row obtained by multiplying all elements of <script type="math/tex">A</script> by <script type="math/tex">b</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">div</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SRow</span><span class="p">{</span><span class="n">T</span><span class="p">},</span> <span class="n">b</span><span class="o">::</span><span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SRow</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">div(A::SRow{T}, b::T) -&gt; SRow</code></pre>
 <p>Return the sparse row obtained by dividing all elements of <script type="math/tex">A</script> by <script type="math/tex">b</script> using <code>div</code>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">divexact</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SRow</span><span class="p">{</span><span class="n">T</span><span class="p">},</span> <span class="n">b</span><span class="o">::</span><span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SRow</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">divexact(A::SRow{T}, b::T) -&gt; SRow</code></pre>
 <p>Return the sparse row obtained by dividing all elements of <script type="math/tex">A</script> by <script type="math/tex">b</script> using <code>divexact</code>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">add_scaled_row</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SRow</span><span class="p">{</span><span class="n">T</span><span class="p">},</span> <span class="n">B</span><span class="o">::</span><span class="n">SRow</span><span class="p">{</span><span class="n">T</span><span class="p">},</span> <span class="n">c</span><span class="o">::</span><span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SRow</span><span class="p">{</span><span class="n">T</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">add_scaled_row(A::SRow{T}, B::SRow{T}, c::T) -&gt; SRow{T}</code></pre>
 <p>Returns the row <script type="math/tex">c A + B</script>.</p>
 <p><a id='Change-of-base-ring'></a></p>
 <p><a id='Change-of-base-ring-1'></a></p>
 <h3 id="change-of-base-ring">Change of base ring</h3>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">change_base_ring</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">A</span><span class="o">::</span><span class="n">SRow</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SRow</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">change_base_ring(R::Ring, A::SRow) -&gt; SRow</code></pre>
 <p>Create a new sparse row by coercing all elements into the ring <script type="math/tex">R</script>.</p>
 <p><a id='Maximum,-minimum-and-2-norm'></a></p>
 <p><a id='Maximum,-minimum-and-2-norm-1'></a></p>
 <h3 id="maximum-minimum-and-2-norm">Maximum, minimum and 2-norm</h3>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">maximum</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SRow</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">T</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">maximum(A::SRow{T}) -&gt; T</code></pre>
 <p>Returns the largest entry of <script type="math/tex">A</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code>  <span class="n">minimum</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">NfRelOrdIdl</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfOrdIdl</span>
-  <span class="n">minimum</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">NfRelOrdIdl</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfRelOrdIdl</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">  minimum(A::NfRelOrdIdl) -&gt; NfOrdIdl
+  minimum(A::NfRelOrdIdl) -&gt; NfRelOrdIdl</code></pre>
 <p>Returns the ideal <script type="math/tex">A \cap O</script> where <script type="math/tex">O</script> is the maximal order of the coefficient ideals of <script type="math/tex">A</script>.</p>
-<div class="codehilite"><pre><span></span><code>minimum(A::SRow{T}) -&gt; T
-</code></pre></div>
+<pre class="highlight"><code>minimum(A::SRow{T}) -&gt; T</code></pre>
 <p>Returns the smallest entry of <script type="math/tex">A</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">norm2</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SRow</span><span class="p">{</span><span class="n">T</span><span class="p">}</span> <span class="o">-&gt;</span> <span class="n">T</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">norm2(A::SRow{T} -&gt; T</code></pre>
 <p>Returns <script type="math/tex">A \cdot A^t</script>.</p>
 <p><a id='Functionality-for-integral-sparse-rows'></a></p>
 <p><a id='Functionality-for-integral-sparse-rows-1'></a></p>
 <h3 id="functionality-for-integral-sparse-rows">Functionality for integral sparse rows</h3>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">lift</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SRow</span><span class="p">{</span><span class="n">nmod</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">SRow</span><span class="p">{</span><span class="n">fmpz</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">lift(A::SRow{nmod}) -&gt; SRow{fmpz}</code></pre>
 <p>Return the sparse row obtained by lifting all entries in <script type="math/tex">A</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">mod!</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SRow</span><span class="p">{</span><span class="n">fmpz</span><span class="p">},</span> <span class="n">n</span><span class="o">::</span><span class="n">fmpz</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SRow</span><span class="p">{</span><span class="n">fmpz</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">mod!(A::SRow{fmpz}, n::fmpz) -&gt; SRow{fmpz}</code></pre>
 <p>Inplace reduction of all entries of <script type="math/tex">A</script> modulo <script type="math/tex">n</script> to the positive residue system.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">mod_sym!</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SRow</span><span class="p">{</span><span class="n">fmpz</span><span class="p">},</span> <span class="n">n</span><span class="o">::</span><span class="n">fmpz</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SRow</span><span class="p">{</span><span class="n">fmpz</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">mod_sym!(A::SRow{fmpz}, n::fmpz) -&gt; SRow{fmpz}</code></pre>
 <p>Inplace reduction of all entries of <script type="math/tex">A</script> modulo <script type="math/tex">n</script> to the symmetric residue system.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">maximum</span><span class="p">(</span><span class="n">abs</span><span class="p">,</span> <span class="n">A</span><span class="o">::</span><span class="n">SRow</span><span class="p">{</span><span class="n">fmpz</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">fmpz</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">maximum(abs, A::SRow{fmpz}) -&gt; fmpz</code></pre>
 <p>Returns the largest, in absolute value, entry of <script type="math/tex">A</script>.</p>
 <p><a id='Sparse-matrices'></a></p>
 <p><a id='Sparse-matrices-1'></a></p>
@@ -1020,167 +1002,131 @@
 <p><a id='Construction-1'></a></p>
 <h3 id="construction">Construction</h3>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">sparse_matrix</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">sparse_matrix(R::Ring) -&gt; SMat</code></pre>
 <p>Return an empty sparse matrix with base ring <script type="math/tex">R</script>.</p>
 <p>Sparse matrices can also be created from dense matrices as well as from julia arrays:</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">sparse_matrix</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">MatElem</span><span class="p">;</span> <span class="n">keepzrows</span><span class="o">::</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">sparse_matrix(A::MatElem; keepzrows::Bool = true)</code></pre>
 <p>Constructs the sparse matrix corresponding to the dense matrix <script type="math/tex">A</script>. If <code>keepzrows</code> is false, then the constructor will drop any zero row of <script type="math/tex">A</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">sparse_matrix</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">A</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="n">T</span><span class="p">,</span> <span class="mi">2</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">sparse_matrix(R::Ring, A::Array{T, 2}) -&gt; SMat</code></pre>
 <p>Constructs the sparse matrix over <script type="math/tex">R</script> corresponding to <script type="math/tex">A</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">sparse_matrix</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">A</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="n">T</span><span class="p">,</span> <span class="mi">2</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">sparse_matrix(R::Ring, A::Array{T, 2}) -&gt; SMat</code></pre>
 <p>Constructs the sparse matrix over <script type="math/tex">R</script> corresponding to <script type="math/tex">A</script>.</p>
 <p>The normal way however, is to add rows:</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">push!</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">{</span><span class="n">T</span><span class="p">},</span> <span class="n">B</span><span class="o">::</span><span class="n">SRow</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="n">where</span> <span class="n">T</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">push!(A::SMat{T}, B::SRow{T}) where T</code></pre>
 <p>Appends the sparse row <code>B</code> to <code>A</code>.</p>
 <p>Sparse matrices can also be concatenated to form larger ones:</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">vcat!</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">vcat!(A::SMat, B::SMat) -&gt; SMat</code></pre>
 <p>Vertically joins <script type="math/tex">A</script> and <script type="math/tex">B</script> inplace, that is, the rows of <script type="math/tex">B</script> are appended to <script type="math/tex">A</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">vcat</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">vcat(A::SMat, B::SMat) -&gt; SMat</code></pre>
 <p>Vertically joins <script type="math/tex">A</script> and <script type="math/tex">B</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">hcat!</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">hcat!(A::SMat, B::SMat) -&gt; SMat</code></pre>
 <p>Horizontally concatenates <script type="math/tex">A</script> and <script type="math/tex">B</script>, inplace, changing <script type="math/tex">A</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">hcat</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">hcat(A::SMat, B::SMat) -&gt; SMat</code></pre>
 <p>Horizontally concatenates <script type="math/tex">A</script> and <script type="math/tex">B</script>.</p>
 <p>(Normal julia <script type="math/tex">cat</script> is also supported)</p>
 <p>There are special constructors:</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">identity_matrix</span><span class="p">(</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="n">SMat</span><span class="p">},</span> <span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">identity_matrix(::Type{SMat}, R::Ring, n::Int)</code></pre>
 <p>Return a sparse <script type="math/tex">n</script> times <script type="math/tex">n</script> identity matrix over <script type="math/tex">R</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">zero_matrix</span><span class="p">(</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="n">SMat</span><span class="p">},</span> <span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">zero_matrix(::Type{SMat}, R::Ring, n::Int)</code></pre>
 <p>Return a sparse <script type="math/tex">n</script> times <script type="math/tex">n</script> zero matrix over <script type="math/tex">R</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">zero_matrix</span><span class="p">(</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="n">SMat</span><span class="p">},</span> <span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">m</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">zero_matrix(::Type{SMat}, R::Ring, n::Int, m::Int)</code></pre>
 <p>Return a sparse <script type="math/tex">n</script> times <script type="math/tex">m</script> zero matrix over <script type="math/tex">R</script>.</p>
 <p>Slices:</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">sub</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">,</span> <span class="n">r</span><span class="o">::</span><span class="kt">UnitRange</span><span class="p">,</span> <span class="n">c</span><span class="o">::</span><span class="kt">UnitRange</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">sub(A::SMat, r::UnitRange, c::UnitRange) -&gt; SMat</code></pre>
 <p>Return the submatrix of <script type="math/tex">A</script>, where the rows correspond to <script type="math/tex">r</script> and the columns correspond to <script type="math/tex">c</script>.</p>
 <p>Transpose:</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">transpose(A::SMat) -&gt; SMat</code></pre>
 <p>Returns the transpose of <script type="math/tex">A</script>.</p>
 <p><a id='Elementary-Properties'></a></p>
 <p><a id='Elementary-Properties-1'></a></p>
 <h3 id="elementary-properties">Elementary Properties</h3>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">sparsity</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Float64</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">sparsity(A::SMat) -&gt; Float64</code></pre>
 <p>Return the sparsity of <code>A</code>, that is, the number of zero-valued elements divided by the number of all elements.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">density</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Float64</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">density(A::SMat) -&gt; Float64</code></pre>
 <p>Return the density of <code>A</code>, that is, the number of nonzero-valued elements divided by the number of all elements.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">nnz</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">nnz(A::SMat) -&gt; Int</code></pre>
 <p>Return the number of non-zero entries of <script type="math/tex">A</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">nrows</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">nrows(A::SMat) -&gt; Int</code></pre>
 <p>Return the number of rows of <script type="math/tex">A</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">ncols</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">ncols(A::SMat) -&gt; Int</code></pre>
 <p>Return the number of columns of <script type="math/tex">A</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">isone</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">isone(A::SMat)</code></pre>
 <p>Tests if <script type="math/tex">A</script> is an identity matrix.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">iszero</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">iszero(A::SMat)</code></pre>
 <p>Tests if <script type="math/tex">A</script> is a zero matrix.</p>
 <p><a id='Manipulation/-Access'></a></p>
 <p><a id='Manipulation/-Access-1'></a></p>
 <h3 id="manipulation-access">Manipulation/ Access</h3>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">getindex</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">,</span> <span class="n">i</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">j</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">getindex(A::SMat, i::Int, j::Int)</code></pre>
 <p>Given a sparse matrix <script type="math/tex">A = (a_{ij})_{i, j}</script>, return the entry <script type="math/tex">a_{ij}</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">getindex</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">,</span> <span class="n">i</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SRow</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">getindex(A::SMat, i::Int) -&gt; SRow</code></pre>
 <p>Given a sparse matrix <script type="math/tex">A</script> and an index <script type="math/tex">i</script>, return the <script type="math/tex">i</script>-th row of <script type="math/tex">A</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">setindex!</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">,</span> <span class="n">b</span><span class="o">::</span><span class="n">SRow</span><span class="p">,</span> <span class="n">i</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">setindex!(A::SMat, b::SRow, i::Int)</code></pre>
 <p>Given a sparse matrix <script type="math/tex">A</script>, a sparse row <script type="math/tex">b</script> and an index <script type="math/tex">i</script>, set the <script type="math/tex">i</script>-th row of <script type="math/tex">A</script> equal to <script type="math/tex">b</script>.</p>
 <p>Changing of the ring:</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">map_entries</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">map_entries(f, A::SMat) -&gt; SMat</code></pre>
 <p>Given a sparse matrix <script type="math/tex">A</script> and a callable object <script type="math/tex">f</script>, this function will construct a new sparse matrix by applying <script type="math/tex">f</script> to all elements of <script type="math/tex">A</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">change_base_ring</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">change_base_ring(R::Ring, A::SMat)</code></pre>
 <p>Create a new sparse matrix by coercing all elements into the ring <script type="math/tex">R</script>.</p>
 <p><a id='Arithmetic'></a></p>
 <p><a id='Arithmetic-1'></a></p>
 <h3 id="arithmetic">Arithmetic</h3>
 <p>Various products:</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">mul</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">{</span><span class="n">T</span><span class="p">},</span> <span class="n">b</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kt">Vector</span><span class="p">{</span><span class="n">T</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">mul(A::SMat{T}, b::AbstractVector{T}) -&gt; Vector{T}</code></pre>
 <p>Return the product <script type="math/tex">A \cdot b</script> as a dense vector.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">mul</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">{</span><span class="n">T</span><span class="p">},</span> <span class="n">b</span><span class="o">::</span><span class="kt">AbstractArray</span><span class="p">{</span><span class="n">T</span><span class="p">,</span> <span class="mi">2</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kt">Array</span><span class="p">{</span><span class="n">T</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">mul(A::SMat{T}, b::AbstractArray{T, 2}) -&gt; Array{T, 2}</code></pre>
 <p>Return the product <script type="math/tex">A \cdot b</script> as a dense array.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">mul</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">{</span><span class="n">T</span><span class="p">},</span> <span class="n">b</span><span class="o">::</span><span class="n">MatElem</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">MatElem</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">mul(A::SMat{T}, b::MatElem{T}) -&gt; MatElem</code></pre>
 <p>Return the product <script type="math/tex">A \cdot b</script> as a dense matrix.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">mul</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SRow</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SRow</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">mul(A::SRow, B::SMat) -&gt; SRow</code></pre>
 <p>Return the product <script type="math/tex">A\cdot B</script> as a sparse row.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">::</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">SMat</span><span class="p">{</span><span class="n">T</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">*(b::T, A::SMat{T}) -&gt; SMat{T}</code></pre>
 <p>Return the product <script type="math/tex">b \cdot A</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">::</span><span class="kt">Integer</span><span class="p">,</span> <span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">SMat</span><span class="p">{</span><span class="n">T</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">*(b::Integer, A::SMat{T}) -&gt; SMat{T}</code></pre>
 <p>Return the product <script type="math/tex">b \cdot A</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">::</span><span class="n">fmpz</span><span class="p">,</span> <span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">SMat</span><span class="p">{</span><span class="n">T</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">*(b::fmpz, A::SMat{T}) -&gt; SMat{T}</code></pre>
 <p>Return the product <script type="math/tex">b \cdot A</script>.</p>
 <p>Other:</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">+</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">+(A::SMat, B::SMat) -&gt; SMat</code></pre>
 <p>Return the sum <script type="math/tex">A + B</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">-</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">-(A::SMat, B::SMat) -&gt; SMat</code></pre>
 <p>Return the difference <script type="math/tex">A - B</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">==</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">==(A::SMat, B::SMat) -&gt; Bool</code></pre>
 <p>Return whether <script type="math/tex">A</script> is equal to <script type="math/tex">B</script>.</p>
                 
               
@@ -1263,6 +1209,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
       
         <script src="../../assets/mathjaxhelper.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
       
     
   </body>

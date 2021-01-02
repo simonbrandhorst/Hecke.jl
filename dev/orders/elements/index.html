@@ -48,6 +48,8 @@
     
       <link rel="stylesheet" href="../../css/extra.css">
     
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+    
     
       
     
@@ -777,258 +779,188 @@
 <h2 id="creation">Creation</h2>
 <p>Elements are constructed either as linear combinations of basis elements or via explicit coercion. Elements will be of type <code>NfOrdElem</code>,  the type if actually parametrized by the type of the surrounding field and the type of the field elements. E.g. the type of any element in any order of an absolute simple field will be <code>NfAbsOrdElem{AnticNumberField,nf_elem}</code></p>
 <hr />
-<div class="codehilite"><pre><span></span><code>  <span class="p">(</span><span class="n">O</span><span class="o">::</span><span class="n">NfOrd</span><span class="p">)(</span><span class="n">a</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="n">fmpz</span><span class="p">,</span> <span class="kt">Integer</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">NfAbsOrdElem</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">  (O::NfOrd)(a::Union{fmpz, Integer}) -&gt; NfAbsOrdElem</code></pre>
 <p>Given an element <script type="math/tex">a</script> of type <code>fmpz</code> or <code>Integer</code>, this function coerces the element into <script type="math/tex">\mathcal O</script>. It will be checked that <script type="math/tex">a</script> is contained in <script type="math/tex">\mathcal O</script> if and only if <code>check</code> is <code>true</code>.</p>
-<div class="codehilite"><pre><span></span><code>  (O::NfOrd)(arr::Array{fmpz, 1})
-</code></pre></div>
+<pre class="highlight"><code>  (O::NfOrd)(arr::Array{fmpz, 1})</code></pre>
 <p>Returns the element of <script type="math/tex">\mathcal O</script> with coefficient vector <code>arr</code>.</p>
-<div class="codehilite"><pre><span></span><code>  (O::NfOrd)() -&gt; NfAbsOrdElem
-</code></pre></div>
+<pre class="highlight"><code>  (O::NfOrd)() -&gt; NfAbsOrdElem</code></pre>
 <p>This function constructs a new element of <script type="math/tex">\mathcal O</script> which is set to <script type="math/tex">0</script>.</p>
 <p><a id='Basic-properties'></a></p>
 <p><a id='Basic-properties-1'></a></p>
 <h2 id="basic-properties">Basic properties</h2>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">parent</span><span class="p">(</span><span class="n">g</span><span class="o">::</span><span class="n">Perm</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">parent(g::Perm)</code></pre>
 <p>Return the parent of the permutation <code>g</code>.</p>
-<div class="codehilite"><pre><span></span><code>julia&gt; G = SymmetricGroup(5); g = Perm([3,4,5,2,1])
+<pre class="highlight"><code class="language-julia-repl">julia&gt; G = SymmetricGroup(5); g = Perm([3,4,5,2,1])
 (1,3,5)(2,4)
 
 julia&gt; parent(g) == G
-true
-</code></pre></div>
-<div class="codehilite"><pre><span></span><code>parent(a::AbstractAlgebra.MatElem{T}, cached::Bool = true) where T &lt;: RingElement
-</code></pre></div>
+true</code></pre>
+<pre class="highlight"><code>parent(a::AbstractAlgebra.MatElem{T}, cached::Bool = true) where T &lt;: RingElement</code></pre>
 <p>Return the parent object of the given matrix.</p>
-<div class="codehilite"><pre><span></span><code>parent(a::AbstractAlgebra.MatAlgElem{T}, cached::Bool = true) where T &lt;: RingElement
-</code></pre></div>
+<pre class="highlight"><code>parent(a::AbstractAlgebra.MatAlgElem{T}, cached::Bool = true) where T &lt;: RingElement</code></pre>
 <p>Return the parent object of the given matrix.</p>
-<div class="codehilite"><pre><span></span><code>parent(a::NfAbsOrdElem) -&gt; NfOrd
-</code></pre></div>
+<pre class="highlight"><code>parent(a::NfAbsOrdElem) -&gt; NfOrd</code></pre>
 <p>Returns the order of which <script type="math/tex">a</script> is an element.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">elem_in_nf</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">nf_elem</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">elem_in_nf(a::NfAbsOrdElem) -&gt; nf_elem</code></pre>
 <p>Returns the element <script type="math/tex">a</script> considered as an element of the ambient number field.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">coordinates</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Array</span><span class="p">{</span><span class="n">fmpz</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">coordinates(a::NfAbsOrdElem) -&gt; Array{fmpz, 1}</code></pre>
 <p>Returns the coefficient vector of <script type="math/tex">a</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">discriminant</span><span class="p">(</span><span class="n">B</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="mi">1</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">fmpz</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">discriminant(B::Array{NfAbsOrdElem, 1}) -&gt; fmpz</code></pre>
 <p>Returns the discriminant of the family <script type="math/tex">B</script>.</p>
-<div class="codehilite"><pre><span></span><code>discriminant(O::AlgssRelOrd)
-</code></pre></div>
+<pre class="highlight"><code>discriminant(O::AlgssRelOrd)</code></pre>
 <p>Returns the discriminant of <script type="math/tex">O</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">==</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">==(x::NfAbsOrdElem, y::NfAbsOrdElem) -&gt; Bool</code></pre>
 <p>Returns whether <script type="math/tex">x</script> and <script type="math/tex">y</script> are equal.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">zero</span><span class="p">(</span><span class="n">O</span><span class="o">::</span><span class="n">NfOrd</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfAbsOrdElem</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">zero(O::NfOrd) -&gt; NfAbsOrdElem</code></pre>
 <p>Returns the zero element of <script type="math/tex">\mathcal O</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">one</span><span class="p">(</span><span class="n">O</span><span class="o">::</span><span class="n">NfOrd</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfAbsOrdElem</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">one(O::NfOrd) -&gt; NfAbsOrdElem</code></pre>
 <p>Returns the one element of <script type="math/tex">\mathcal O</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">iszero</span><span class="p">(</span><span class="n">v</span><span class="o">::</span><span class="n">AbstractAlgebra</span><span class="o">.</span><span class="n">FPModuleElem</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="n">where</span> <span class="n">T</span> <span class="o">&lt;:</span> <span class="n">RingElement</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">iszero(v::AbstractAlgebra.FPModuleElem{T}) where T &lt;: RingElement</code></pre>
 <p>Return true if <script type="math/tex">v</script> is the zero element of the module <script type="math/tex">M</script>.</p>
-<div class="codehilite"><pre><span></span><code>iszero(a::NfOrd) -&gt; Bool
-</code></pre></div>
+<pre class="highlight"><code>iszero(a::NfOrd) -&gt; Bool</code></pre>
 <p>Tests if <script type="math/tex">a</script> is zero.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">isone</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfOrd</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">isone(a::NfOrd) -&gt; Bool</code></pre>
 <p>Tests if <script type="math/tex">a</script> is one.</p>
 <p><a id='Arithmetic'></a></p>
 <p><a id='Arithmetic-1'></a></p>
 <h2 id="arithmetic">Arithmetic</h2>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">-</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">AbstractAlgebra</span><span class="o">.</span><span class="n">ResElem</span><span class="p">{</span><span class="n">T</span><span class="p">},</span> <span class="n">b</span><span class="o">::</span><span class="n">AbstractAlgebra</span><span class="o">.</span><span class="n">ResElem</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="n">where</span> <span class="p">{</span><span class="n">T</span> <span class="o">&lt;:</span> <span class="n">RingElement</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">-(a::AbstractAlgebra.ResElem{T}, b::AbstractAlgebra.ResElem{T}) where {T &lt;: RingElement}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.ResElem{T}, b::T) where {T &lt;: RingElem}
-</code></pre></div>
+<pre class="highlight"><code>-(a::AbstractAlgebra.ResElem{T}, b::T) where {T &lt;: RingElem}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::T, b::AbstractAlgebra.ResElem{T}) where {T &lt;: RingElem}
-</code></pre></div>
+<pre class="highlight"><code>-(a::T, b::AbstractAlgebra.ResElem{T}) where {T &lt;: RingElem}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.ResFieldElem{T}, b::AbstractAlgebra.ResFieldElem{T}) where {T &lt;: RingElement}
-</code></pre></div>
+<pre class="highlight"><code>-(a::AbstractAlgebra.ResFieldElem{T}, b::AbstractAlgebra.ResFieldElem{T}) where {T &lt;: RingElement}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.ResFieldElem{T}, b::T) where {T &lt;: RingElem}
-</code></pre></div>
+<pre class="highlight"><code>-(a::AbstractAlgebra.ResFieldElem{T}, b::T) where {T &lt;: RingElem}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::T, b::AbstractAlgebra.ResFieldElem{T}) where {T &lt;: RingElem}
-</code></pre></div>
+<pre class="highlight"><code>-(a::T, b::AbstractAlgebra.ResFieldElem{T}) where {T &lt;: RingElem}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.PolyElem{T}, b::AbstractAlgebra.PolyElem{T}) where {T &lt;: RingElement}
-</code></pre></div>
+<pre class="highlight"><code>-(a::AbstractAlgebra.PolyElem{T}, b::AbstractAlgebra.PolyElem{T}) where {T &lt;: RingElement}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.NCPolyElem{T}, b::AbstractAlgebra.NCPolyElem{T}) where {T &lt;: NCRingElem}
-</code></pre></div>
+<pre class="highlight"><code>-(a::AbstractAlgebra.NCPolyElem{T}, b::AbstractAlgebra.NCPolyElem{T}) where {T &lt;: NCRingElem}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.RelSeriesElem{T}, b::AbstractAlgebra.RelSeriesElem{T}) where {T &lt;: RingElement}
-</code></pre></div>
+<pre class="highlight"><code>-(a::AbstractAlgebra.RelSeriesElem{T}, b::AbstractAlgebra.RelSeriesElem{T}) where {T &lt;: RingElement}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.AbsSeriesElem{T}, b::AbstractAlgebra.AbsSeriesElem{T}) where {T &lt;: RingElement}
-</code></pre></div>
+<pre class="highlight"><code>-(a::AbstractAlgebra.AbsSeriesElem{T}, b::AbstractAlgebra.AbsSeriesElem{T}) where {T &lt;: RingElement}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::Generic.LaurentSeriesElem{T}, b::Generic.LaurentSeriesElem{T}) where {T &lt;: RingElement}
-</code></pre></div>
+<pre class="highlight"><code>-(a::Generic.LaurentSeriesElem{T}, b::Generic.LaurentSeriesElem{T}) where {T &lt;: RingElement}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(x::Generic.MatrixElem{T}, y::Generic.MatrixElem{T}) where {T &lt;: RingElement}
-</code></pre></div>
+<pre class="highlight"><code>-(x::Generic.MatrixElem{T}, y::Generic.MatrixElem{T}) where {T &lt;: RingElement}</code></pre>
 <p>Return <script type="math/tex">x - y</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(x::T, y::Generic.MatrixElem{T}) where {T &lt;: RingElem}
-</code></pre></div>
+<pre class="highlight"><code>-(x::T, y::Generic.MatrixElem{T}) where {T &lt;: RingElem}</code></pre>
 <p>Return <script type="math/tex">S(x) - y</script> where <script type="math/tex">S</script> is the parent of <script type="math/tex">y</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(x::Generic.MatrixElem{T}, y::T) where {T &lt;: RingElem}
-</code></pre></div>
+<pre class="highlight"><code>-(x::Generic.MatrixElem{T}, y::T) where {T &lt;: RingElem}</code></pre>
 <p>Return <script type="math/tex">x - S(y)</script>, where <script type="math/tex">S</script> is the parent of <script type="math/tex">a</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.FracElem{T}, b::AbstractAlgebra.FracElem{T}) where {T &lt;: RingElem}
-</code></pre></div>
+<pre class="highlight"><code>-(a::AbstractAlgebra.FracElem{T}, b::AbstractAlgebra.FracElem{T}) where {T &lt;: RingElem}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::AbstractAlgebra.FracElem{T}, b::T) where {T &lt;: RingElem}
-</code></pre></div>
+<pre class="highlight"><code>-(a::AbstractAlgebra.FracElem{T}, b::T) where {T &lt;: RingElem}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::T, b::AbstractAlgebra.FracElem{T}) where {T &lt;: RingElem}
-</code></pre></div>
+<pre class="highlight"><code>-(a::T, b::AbstractAlgebra.FracElem{T}) where {T &lt;: RingElem}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(x::NfAbsOrdElem) -&gt; NfAbsOrdElem
-</code></pre></div>
+<pre class="highlight"><code>-(x::NfAbsOrdElem) -&gt; NfAbsOrdElem</code></pre>
 <p>Returns the additive inverse of <script type="math/tex">x</script>.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">-</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">SMat</span><span class="p">,</span> <span class="n">B</span><span class="o">::</span><span class="n">SMat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SMat</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">-(A::SMat, B::SMat) -&gt; SMat</code></pre>
 <p>Return the difference <script type="math/tex">A - B</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(A::SRow, B::SRow) -&gt; SRow
-</code></pre></div>
+<pre class="highlight"><code>-(A::SRow, B::SRow) -&gt; SRow</code></pre>
 <p>Returns the difference of <script type="math/tex">A</script> and <script type="math/tex">B</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(A::SRow) -&gt; SRow
-</code></pre></div>
+<pre class="highlight"><code>-(A::SRow) -&gt; SRow</code></pre>
 <p>Returns the negative of <script type="math/tex">A</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::AbsAlgAssElem) -&gt; AbsAlgAssElem
-</code></pre></div>
+<pre class="highlight"><code>-(a::AbsAlgAssElem) -&gt; AbsAlgAssElem</code></pre>
 <p>Returns <script type="math/tex">-a</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::AbsAlgAssElem, b::AbsAlgAssElem) -&gt; AbsAlgAssElem
-</code></pre></div>
+<pre class="highlight"><code>-(a::AbsAlgAssElem, b::AbsAlgAssElem) -&gt; AbsAlgAssElem</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
-<div class="codehilite"><pre><span></span><code>-(a::AlgMatElem, b::AlgMatElem) -&gt; AlgMatElem
-</code></pre></div>
+<pre class="highlight"><code>-(a::AlgMatElem, b::AlgMatElem) -&gt; AlgMatElem</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">+</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfAbsOrdElem</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">+(x::NfAbsOrdElem, y::NfAbsOrdElem) -&gt; NfAbsOrdElem</code></pre>
 <p>Returns <script type="math/tex">x + y</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfAbsOrdElem</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">-(x::NfAbsOrdElem, y::NfAbsOrdElem) -&gt; NfAbsOrdElem</code></pre>
 <p>Returns <script type="math/tex">x - y</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfAbsOrdElem</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">*(x::NfAbsOrdElem, y::NfAbsOrdElem) -&gt; NfAbsOrdElem</code></pre>
 <p>Returns <script type="math/tex">x \cdot y</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="o">^</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">^(x::NfAbsOrdElem, y::Int)</code></pre>
 <p>Returns <script type="math/tex">x^y</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">mod</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">m</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="n">fmpz</span><span class="p">,</span> <span class="kt">Int</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">NfAbsOrdElem</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">mod(a::NfAbsOrdElem, m::Union{fmpz, Int}) -&gt; NfAbsOrdElem</code></pre>
 <p>Reduces the coefficient vector of <script type="math/tex">a</script> modulo <script type="math/tex">m</script> and returns the corresponding element. The coefficient vector of the result will have entries <script type="math/tex">x</script> with <script type="math/tex">0 \leq x \leq m</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">powermod</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">i</span><span class="o">::</span><span class="n">fmpz</span><span class="p">,</span> <span class="n">m</span><span class="o">::</span><span class="kt">Integer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfAbsOrdElem</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">powermod(a::NfAbsOrdElem, i::fmpz, m::Integer) -&gt; NfAbsOrdElem</code></pre>
 <p>Returns the element <script type="math/tex">a^i</script> modulo <script type="math/tex">m</script>.</p>
 <p><a id='Miscellaneous'></a></p>
 <p><a id='Miscellaneous-1'></a></p>
 <h2 id="miscellaneous">Miscellaneous</h2>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">representation_matrix</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">fmpz_mat</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">representation_matrix(a::NfAbsOrdElem) -&gt; fmpz_mat</code></pre>
 <p>Returns the representation matrix of the element <script type="math/tex">a</script>.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">representation_matrix</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">K</span><span class="o">::</span><span class="n">AnticNumberField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FakeFmpqMat</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">representation_matrix(a::NfAbsOrdElem, K::AnticNumberField) -&gt; FakeFmpqMat</code></pre>
 <p>Returns the representation matrix of the element <script type="math/tex">a</script> considered as an element of the ambient number field <script type="math/tex">K</script>. It is assumed that <script type="math/tex">K</script> is the ambient number field of the order of <script type="math/tex">a</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">representation_matrix</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">K</span><span class="o">::</span><span class="n">AnticNumberField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FakeFmpqMat</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">representation_matrix(a::NfAbsOrdElem, K::AnticNumberField) -&gt; FakeFmpqMat</code></pre>
 <p>Returns the representation matrix of the element <script type="math/tex">a</script> considered as an element of the ambient number field <script type="math/tex">K</script>. It is assumed that <script type="math/tex">K</script> is the ambient number field of the order of <script type="math/tex">a</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">tr</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">fmpz</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">tr(a::NfAbsOrdElem) -&gt; fmpz</code></pre>
 <p>Returns the trace of <script type="math/tex">a</script>.</p>
-<div class="codehilite"><pre><span></span><code>tr(x::AbsAlgAssElem{T}) where T -&gt; T
-</code></pre></div>
+<pre class="highlight"><code>tr(x::AbsAlgAssElem{T}) where T -&gt; T</code></pre>
 <p>Returns the trace of <script type="math/tex">x</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfRelOrdIdl</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NfOrdIdl</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">norm(a::NfRelOrdIdl) -&gt; NfOrdIdl</code></pre>
 <p>Returns the norm of <script type="math/tex">a</script>.</p>
-<div class="codehilite"><pre><span></span><code>norm(a::NfRelOrdFracIdl{T, S}) -&gt; S
-</code></pre></div>
+<pre class="highlight"><code>norm(a::NfRelOrdFracIdl{T, S}) -&gt; S</code></pre>
 <p>Returns the norm of <script type="math/tex">a</script>.</p>
-<div class="codehilite"><pre><span></span><code>norm(a::NfAbsOrdElem) -&gt; fmpz
-</code></pre></div>
+<pre class="highlight"><code>norm(a::NfAbsOrdElem) -&gt; fmpz</code></pre>
 <p>Returns the norm of <script type="math/tex">a</script>.</p>
-<div class="codehilite"><pre><span></span><code>norm(a::AlgAssAbsOrdIdl, O::AlgAssAbsOrd; copy::Bool = true) -&gt; fmpq
-</code></pre></div>
+<pre class="highlight"><code>norm(a::AlgAssAbsOrdIdl, O::AlgAssAbsOrd; copy::Bool = true) -&gt; fmpq</code></pre>
 <p>Returns the norm of <script type="math/tex">a</script> considered as an (possibly fractional) ideal of <script type="math/tex">O</script>.</p>
-<div class="codehilite"><pre><span></span><code>norm(a::AlgAssRelOrdIdl{S, T, U}, O::AlgAssRelOrd{S, T, U}; copy::Bool = true)
-  where { S, T, U } -&gt; T
-</code></pre></div>
+<pre class="highlight"><code>norm(a::AlgAssRelOrdIdl{S, T, U}, O::AlgAssRelOrd{S, T, U}; copy::Bool = true)
+  where { S, T, U } -&gt; T</code></pre>
 <p>Returns the norm of <script type="math/tex">a</script> considered as an (possibly fractional) ideal of <script type="math/tex">O</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">rand</span><span class="p">(</span><span class="n">O</span><span class="o">::</span><span class="n">NfOrd</span><span class="p">,</span> <span class="n">n</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="kt">Integer</span><span class="p">,</span> <span class="n">fmpz</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="n">NfAbsOrdElem</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">rand(O::NfOrd, n::Union{Integer, fmpz}) -&gt; NfAbsOrdElem</code></pre>
 <p>Computes a coefficient vector with entries uniformly distributed in <script type="math/tex">\{-n,\dotsc,-1,0,1,\dotsc,n\}</script> and returns the corresponding element of the order <script type="math/tex">\mathcal O</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">minkowski_map</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">abs_tol</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Array</span><span class="p">{</span><span class="n">arb</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">minkowski_map(a::NfAbsOrdElem, abs_tol::Int) -&gt; Array{arb, 1}</code></pre>
 <p>Returns the image of <script type="math/tex">a</script> under the Minkowski embedding. Every entry of the array returned is of type <code>arb</code> with radius less then <code>2^-abs_tol</code>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">conjugates_arb</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">abs_tol</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Array</span><span class="p">{</span><span class="n">acb</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">conjugates_arb(x::NfAbsOrdElem, abs_tol::Int) -&gt; Array{acb, 1}</code></pre>
 <p>Compute the conjugates of <code>x</code> as elements of type <code>acb</code>. Recall that we order the complex conjugates <script type="math/tex">\sigma_{r+1}(x),...,\sigma_{r+2s}(x)</script> such that <script type="math/tex">\sigma_{i}(x) = \overline{\sigma_{i + s}(x)}</script> for <script type="math/tex">r + 2 \leq i \leq r + s</script>.</p>
 <p>Every entry <code>y</code> of the array returned satisfies <code>radius(real(y)) &lt; 2^-abs_tol</code>, <code>radius(imag(y)) &lt; 2^-abs_tol</code> respectively.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">conjugates_arb_log</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">abs_tol</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Array</span><span class="p">{</span><span class="n">arb</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">conjugates_arb_log(x::NfAbsOrdElem, abs_tol::Int) -&gt; Array{arb, 1}</code></pre>
 <p>Returns the elements <script type="math/tex">(\log(\lvert \sigma_1(x) \rvert),\dotsc,\log(\lvert\sigma_r(x) \rvert), \dotsc,2\log(\lvert \sigma_{r+1}(x) \rvert),\dotsc, 2\log(\lvert \sigma_{r+s}(x)\rvert))</script> as elements of type <code>arb</code> radius less then <code>2^-abs_tol</code>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">t2</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">NfAbsOrdElem</span><span class="p">,</span> <span class="n">abs_tol</span><span class="o">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">arb</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">t2(x::NfAbsOrdElem, abs_tol::Int = 32) -&gt; arb</code></pre>
 <p>Return the <script type="math/tex">T_2</script>-norm of <script type="math/tex">x</script>. The radius of the result will be less than <code>2^-abs_tol</code>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">minpoly</span><span class="p">(</span><span class="n">S</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">M</span><span class="o">::</span><span class="n">MatElem</span><span class="p">{</span><span class="n">T</span><span class="p">},</span> <span class="n">charpoly_only</span><span class="o">::</span><span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="n">where</span> <span class="p">{</span><span class="n">T</span> <span class="o">&lt;:</span> <span class="n">RingElement</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">minpoly(S::Ring, M::MatElem{T}, charpoly_only::Bool = false) where {T &lt;: RingElement}</code></pre>
 <p>Return the minimal polynomial <script type="math/tex">p</script> of the matrix <script type="math/tex">M</script>. The polynomial ring <script type="math/tex">S</script> of the resulting polynomial must be supplied and the matrix must be square.</p>
-<div class="codehilite"><pre><span></span><code>minpoly(S::Ring, M::MatAlgElem{T}, charpoly_only::Bool = false) where {T &lt;: RingElement}
-</code></pre></div>
+<pre class="highlight"><code>minpoly(S::Ring, M::MatAlgElem{T}, charpoly_only::Bool = false) where {T &lt;: RingElement}</code></pre>
 <p>Return the minimal polynomial <script type="math/tex">p</script> of the matrix <script type="math/tex">M</script>. The polynomial ring <script type="math/tex">S</script> of the resulting polynomial must be supplied and the matrix must be square.</p>
-<div class="codehilite"><pre><span></span><code>minpoly(a::NfRelElem) -&gt; PolyElem
-</code></pre></div>
+<pre class="highlight"><code>minpoly(a::NfRelElem) -&gt; PolyElem</code></pre>
 <p>Given an element <script type="math/tex">a</script> in an extension <script type="math/tex">L/K</script>, this function returns the minimal polynomial of <script type="math/tex">a</script> over <script type="math/tex">K</script>.</p>
-<div class="codehilite"><pre><span></span><code>minpoly(a::NfAbsOrdElem) -&gt; fmpz_poly
-</code></pre></div>
+<pre class="highlight"><code>minpoly(a::NfAbsOrdElem) -&gt; fmpz_poly</code></pre>
 <p>The minimal polynomial of <script type="math/tex">a</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">charpoly</span><span class="p">(</span><span class="n">V</span><span class="o">::</span><span class="n">Ring</span><span class="p">,</span> <span class="n">Y</span><span class="o">::</span><span class="n">Generic</span><span class="o">.</span><span class="n">MatrixElem</span><span class="p">{</span><span class="n">T</span><span class="p">})</span> <span class="n">where</span> <span class="p">{</span><span class="n">T</span> <span class="o">&lt;:</span> <span class="n">RingElement</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">charpoly(V::Ring, Y::Generic.MatrixElem{T}) where {T &lt;: RingElement}</code></pre>
 <p>Return the characteristic polynomial <script type="math/tex">p</script> of the matrix <script type="math/tex">M</script>. The polynomial ring <script type="math/tex">R</script> of the resulting polynomial must be supplied and the matrix is assumed to be square.</p>
-<div class="codehilite"><pre><span></span><code>charpoly(a::NfAbsOrdElem) -&gt; fmpz_poly
-charpoly(a::NfAbsOrdElem, FlintZZ) -&gt; fmpz_poly
-</code></pre></div>
+<pre class="highlight"><code>charpoly(a::NfAbsOrdElem) -&gt; fmpz_poly
+charpoly(a::NfAbsOrdElem, FlintZZ) -&gt; fmpz_poly</code></pre>
 <p>The characteristic polynomial of <script type="math/tex">a</script>.</p>
 <hr />
-<div class="codehilite"><pre><span></span><code><span class="n">factor</span><span class="p">(</span><span class="n">a</span><span class="o">::</span><span class="n">NfOrdElem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Fac</span><span class="p">{</span><span class="n">NfOrdElem</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">factor(a::NfOrdElem) -&gt; Fac{NfOrdElem}</code></pre>
 <p>Computes a factorization of <code>a</code> into irreducible elements. The return value is a factorization <code>fac</code>, which satisfies <code>a = unit(fac) * prod(p^e for (p, e) in fac)</code>.</p>
 <p>The function requires that <code>a</code> is non-zero and that all prime ideals containing <code>a</code> are principal, which is for example satisfied if class group of the order of <code>a</code> is trivial.</p>
                 
@@ -1126,6 +1058,10 @@ charpoly(a::NfAbsOrdElem, FlintZZ) -&gt; fmpz_poly
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
       
         <script src="../../assets/mathjaxhelper.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
       
     
   </body>

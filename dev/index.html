@@ -48,6 +48,8 @@
     
       <link rel="stylesheet" href="css/extra.css">
     
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+    
     
       
     
@@ -782,47 +784,44 @@
 <p><a id='Installation-1'></a></p>
 <h2 id="installation">Installation</h2>
 <p>To use Hecke, a julia version of 1.0 is necessary (the latest stable julia version will do). Please see <a href="https://julialang.org/downloads/">https://julialang.org/downloads/</a> for instructions on how to obtain julia for your system. Once a suitable julia version is installed, use the following steps at the julia prompt to install Hecke:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">julia</span><span class="o">&gt;</span> <span class="k">using</span> <span class="n">Pkg</span>
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;Hecke&quot;</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-julia">julia&gt; using Pkg
+julia&gt; Pkg.add("Hecke")</code></pre>
 <p><a id='Quick-start'></a></p>
 <p><a id='Quick-start-1'></a></p>
 <h2 id="quick-start">Quick start</h2>
 <p>Here is a quick example of using Hecke:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">julia</span><span class="o">&gt;</span> <span class="k">using</span> <span class="n">Hecke</span>
-<span class="o">...</span>
+<pre class="highlight"><code class="language-julia">julia&gt; using Hecke
+...
 
-<span class="n">Welcome</span> <span class="n">to</span> 
+Welcome to 
 
-  <span class="n">_</span>    <span class="n">_</span>           <span class="n">_</span>        
- <span class="o">|</span> <span class="o">|</span>  <span class="o">|</span> <span class="o">|</span>         <span class="o">|</span> <span class="o">|</span>       
- <span class="o">|</span> <span class="o">|</span><span class="n">__</span><span class="o">|</span> <span class="o">|</span> <span class="n">___</span>  <span class="n">___</span><span class="o">|</span> <span class="o">|</span> <span class="n">_____</span> 
- <span class="o">|</span>  <span class="n">__</span>  <span class="o">|/</span> <span class="n">_</span> <span class="o">\/</span> <span class="n">__</span><span class="o">|</span> <span class="o">|/</span> <span class="o">/</span> <span class="n">_</span> <span class="o">\</span>
- <span class="o">|</span> <span class="o">|</span>  <span class="o">|</span> <span class="o">|</span>  <span class="n">__</span><span class="o">/</span> <span class="p">(</span><span class="n">__</span><span class="o">|</span>   <span class="o">&lt;</span>  <span class="n">__</span><span class="o">/</span>
- <span class="o">|</span><span class="n">_</span><span class="o">|</span>  <span class="o">|</span><span class="n">_</span><span class="o">|\</span><span class="n">___</span><span class="o">|\</span><span class="n">___</span><span class="o">|</span><span class="n">_</span><span class="o">|\</span><span class="n">_</span><span class="o">\</span><span class="n">___</span><span class="o">|</span>
+  _    _           _        
+ | |  | |         | |       
+ | |__| | ___  ___| | _____ 
+ |  __  |/ _ \/ __| |/ / _ \
+ | |  | |  __/ (__|   &lt;  __/
+ |_|  |_|\___|\___|_|\_\___|
   
-<span class="n">Version</span> <span class="mf">0.9</span><span class="o">.</span><span class="mi">0</span> <span class="o">...</span> 
- <span class="o">...</span> <span class="n">which</span> <span class="n">comes</span> <span class="n">with</span> <span class="n">absolutely</span> <span class="n">no</span> <span class="n">warranty</span> <span class="n">whatsoever</span>
-<span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2015</span><span class="o">-</span><span class="mi">2018</span> <span class="n">by</span> <span class="n">Claus</span> <span class="n">Fieker</span><span class="p">,</span> <span class="n">Tommy</span> <span class="n">Hofmann</span> <span class="n">and</span> <span class="n">Carlo</span> <span class="n">Sircana</span>
+Version 0.9.0 ... 
+ ... which comes with absolutely no warranty whatsoever
+(c) 2015-2018 by Claus Fieker, Tommy Hofmann and Carlo Sircana
 
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">Qx</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">FlintQQ</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">);</span>
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">f</span> <span class="o">=</span> <span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">K</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">NumberField</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">);</span>
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">O</span> <span class="o">=</span> <span class="n">maximal_order</span><span class="p">(</span><span class="n">K</span><span class="p">);</span>
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">O</span>
-<span class="n">Maximal</span> <span class="n">order</span> <span class="n">of</span> <span class="kt">Number</span> <span class="n">field</span> <span class="n">over</span> <span class="kt">Rational</span> <span class="n">Field</span> <span class="n">with</span> <span class="n">defining</span> <span class="n">polynomial</span> <span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span> 
-<span class="n">with</span> <span class="n">basis</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="o">^</span><span class="mi">2</span><span class="p">]</span>
-</code></pre></div>
+julia&gt; Qx, x = PolynomialRing(FlintQQ, "x");
+julia&gt; f = x^3 + 2;
+julia&gt; K, a = NumberField(f, "a");
+julia&gt; O = maximal_order(K);
+julia&gt; O
+Maximal order of Number field over Rational Field with defining polynomial x^3 + 2 
+with basis [1,a,a^2]</code></pre>
 <p>The documentation of the single functions can also be accessed at the julia prompt. Here is an example:</p>
-<div class="codehilite"><pre><span></span><code>help?&gt; signature
+<pre class="highlight"><code>help?&gt; signature
 search: signature
 
   ----------------------------------------------------------------------------
 
   signature(O::NfMaximalOrder) -&gt; Tuple{Int, Int}
 
-  |  Returns the signature of the ambient number field of \mathcal O.
-</code></pre></div>
+  |  Returns the signature of the ambient number field of \mathcal O.</code></pre>
                 
               
               
@@ -904,6 +903,10 @@ search: signature
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
       
         <script src="assets/mathjaxhelper.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+      
+        <script src="javascripts/config.js"></script>
       
     
   </body>
