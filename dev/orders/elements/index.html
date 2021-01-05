@@ -789,9 +789,7 @@
 <p><a id='Basic-properties-1'></a></p>
 <h2 id="basic-properties">Basic properties</h2>
 <hr />
-<pre class="highlight"><code class="language-julia">parent(a::NfAbsOrdElem) -&gt; NfOrd</code></pre>
-<p>Returns the order of which <script type="math/tex">a</script> is an element.</p>
-<pre class="highlight"><code>parent(g::Perm)</code></pre>
+<pre class="highlight"><code class="language-julia">parent(g::Perm)</code></pre>
 <p>Return the parent of the permutation <code>g</code>.</p>
 <pre class="highlight"><code class="language-julia-repl">julia&gt; G = SymmetricGroup(5); g = Perm([3,4,5,2,1])
 (1,3,5)(2,4)
@@ -802,6 +800,8 @@ true</code></pre>
 <p>Return the parent object of the given matrix.</p>
 <pre class="highlight"><code>parent(a::AbstractAlgebra.MatAlgElem{T}, cached::Bool = true) where T &lt;: RingElement</code></pre>
 <p>Return the parent object of the given matrix.</p>
+<pre class="highlight"><code>parent(a::NfAbsOrdElem) -&gt; NfOrd</code></pre>
+<p>Returns the order of which <script type="math/tex">a</script> is an element.</p>
 <hr />
 <pre class="highlight"><code class="language-julia">elem_in_nf(a::NfAbsOrdElem) -&gt; nf_elem</code></pre>
 <p>Returns the element <script type="math/tex">a</script> considered as an element of the ambient number field.</p>
@@ -823,10 +823,10 @@ true</code></pre>
 <pre class="highlight"><code class="language-julia">one(O::NfOrd) -&gt; NfAbsOrdElem</code></pre>
 <p>Returns the one element of <script type="math/tex">\mathcal O</script>.</p>
 <hr />
-<pre class="highlight"><code class="language-julia">iszero(a::NfOrd) -&gt; Bool</code></pre>
-<p>Tests if <script type="math/tex">a</script> is zero.</p>
-<pre class="highlight"><code>iszero(v::AbstractAlgebra.FPModuleElem{T}) where T &lt;: RingElement</code></pre>
+<pre class="highlight"><code class="language-julia">iszero(v::AbstractAlgebra.FPModuleElem{T}) where T &lt;: RingElement</code></pre>
 <p>Return true if <script type="math/tex">v</script> is the zero element of the module <script type="math/tex">M</script>.</p>
+<pre class="highlight"><code>iszero(a::NfOrd) -&gt; Bool</code></pre>
+<p>Tests if <script type="math/tex">a</script> is zero.</p>
 <hr />
 <pre class="highlight"><code class="language-julia">isone(a::NfOrd) -&gt; Bool</code></pre>
 <p>Tests if <script type="math/tex">a</script> is one.</p>
@@ -834,21 +834,7 @@ true</code></pre>
 <p><a id='Arithmetic-1'></a></p>
 <h2 id="arithmetic">Arithmetic</h2>
 <hr />
-<pre class="highlight"><code class="language-julia">-(x::NfAbsOrdElem) -&gt; NfAbsOrdElem</code></pre>
-<p>Returns the additive inverse of <script type="math/tex">x</script>.</p>
-<pre class="highlight"><code class="language-julia">-(A::SMat, B::SMat) -&gt; SMat</code></pre>
-<p>Return the difference <script type="math/tex">A - B</script>.</p>
-<pre class="highlight"><code>-(A::SRow, B::SRow) -&gt; SRow</code></pre>
-<p>Returns the difference of <script type="math/tex">A</script> and <script type="math/tex">B</script>.</p>
-<pre class="highlight"><code>-(A::SRow) -&gt; SRow</code></pre>
-<p>Returns the negative of <script type="math/tex">A</script>.</p>
-<pre class="highlight"><code>-(a::AbsAlgAssElem) -&gt; AbsAlgAssElem</code></pre>
-<p>Returns <script type="math/tex">-a</script>.</p>
-<pre class="highlight"><code>-(a::AbsAlgAssElem, b::AbsAlgAssElem) -&gt; AbsAlgAssElem</code></pre>
-<p>Return <script type="math/tex">a - b</script>.</p>
-<pre class="highlight"><code>-(a::AlgMatElem, b::AlgMatElem) -&gt; AlgMatElem</code></pre>
-<p>Return <script type="math/tex">a - b</script>.</p>
-<pre class="highlight"><code>-(a::AbstractAlgebra.ResElem{T}, b::AbstractAlgebra.ResElem{T}) where {T &lt;: RingElement}</code></pre>
+<pre class="highlight"><code class="language-julia">-(a::AbstractAlgebra.ResElem{T}, b::AbstractAlgebra.ResElem{T}) where {T &lt;: RingElement}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
 <pre class="highlight"><code>-(a::AbstractAlgebra.ResElem{T}, b::T) where {T &lt;: RingElem}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
@@ -881,6 +867,20 @@ true</code></pre>
 <pre class="highlight"><code>-(a::AbstractAlgebra.FracElem{T}, b::T) where {T &lt;: RingElem}</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
 <pre class="highlight"><code>-(a::T, b::AbstractAlgebra.FracElem{T}) where {T &lt;: RingElem}</code></pre>
+<p>Return <script type="math/tex">a - b</script>.</p>
+<pre class="highlight"><code>-(x::NfAbsOrdElem) -&gt; NfAbsOrdElem</code></pre>
+<p>Returns the additive inverse of <script type="math/tex">x</script>.</p>
+<pre class="highlight"><code class="language-julia">-(A::SMat, B::SMat) -&gt; SMat</code></pre>
+<p>Return the difference <script type="math/tex">A - B</script>.</p>
+<pre class="highlight"><code>-(A::SRow, B::SRow) -&gt; SRow</code></pre>
+<p>Returns the difference of <script type="math/tex">A</script> and <script type="math/tex">B</script>.</p>
+<pre class="highlight"><code>-(A::SRow) -&gt; SRow</code></pre>
+<p>Returns the negative of <script type="math/tex">A</script>.</p>
+<pre class="highlight"><code>-(a::AbsAlgAssElem) -&gt; AbsAlgAssElem</code></pre>
+<p>Returns <script type="math/tex">-a</script>.</p>
+<pre class="highlight"><code>-(a::AbsAlgAssElem, b::AbsAlgAssElem) -&gt; AbsAlgAssElem</code></pre>
+<p>Return <script type="math/tex">a - b</script>.</p>
+<pre class="highlight"><code>-(a::AlgMatElem, b::AlgMatElem) -&gt; AlgMatElem</code></pre>
 <p>Return <script type="math/tex">a - b</script>.</p>
 <hr />
 <pre class="highlight"><code class="language-julia">+(x::NfAbsOrdElem, y::NfAbsOrdElem) -&gt; NfAbsOrdElem</code></pre>
@@ -945,20 +945,20 @@ true</code></pre>
 <pre class="highlight"><code class="language-julia">t2(x::NfAbsOrdElem, abs_tol::Int = 32) -&gt; arb</code></pre>
 <p>Return the <script type="math/tex">T_2</script>-norm of <script type="math/tex">x</script>. The radius of the result will be less than <code>2^-abs_tol</code>.</p>
 <hr />
-<pre class="highlight"><code class="language-julia">minpoly(a::NfRelElem) -&gt; PolyElem</code></pre>
-<p>Given an element <script type="math/tex">a</script> in an extension <script type="math/tex">L/K</script>, this function returns the minimal polynomial of <script type="math/tex">a</script> over <script type="math/tex">K</script>.</p>
-<pre class="highlight"><code>minpoly(a::NfAbsOrdElem) -&gt; fmpz_poly</code></pre>
-<p>The minimal polynomial of <script type="math/tex">a</script>.</p>
-<pre class="highlight"><code>minpoly(S::Ring, M::MatElem{T}, charpoly_only::Bool = false) where {T &lt;: RingElement}</code></pre>
+<pre class="highlight"><code class="language-julia">minpoly(S::Ring, M::MatElem{T}, charpoly_only::Bool = false) where {T &lt;: RingElement}</code></pre>
 <p>Return the minimal polynomial <script type="math/tex">p</script> of the matrix <script type="math/tex">M</script>. The polynomial ring <script type="math/tex">S</script> of the resulting polynomial must be supplied and the matrix must be square.</p>
 <pre class="highlight"><code>minpoly(S::Ring, M::MatAlgElem{T}, charpoly_only::Bool = false) where {T &lt;: RingElement}</code></pre>
 <p>Return the minimal polynomial <script type="math/tex">p</script> of the matrix <script type="math/tex">M</script>. The polynomial ring <script type="math/tex">S</script> of the resulting polynomial must be supplied and the matrix must be square.</p>
+<pre class="highlight"><code>minpoly(a::NfRelElem) -&gt; PolyElem</code></pre>
+<p>Given an element <script type="math/tex">a</script> in an extension <script type="math/tex">L/K</script>, this function returns the minimal polynomial of <script type="math/tex">a</script> over <script type="math/tex">K</script>.</p>
+<pre class="highlight"><code>minpoly(a::NfAbsOrdElem) -&gt; fmpz_poly</code></pre>
+<p>The minimal polynomial of <script type="math/tex">a</script>.</p>
 <hr />
-<pre class="highlight"><code class="language-julia">charpoly(a::NfAbsOrdElem) -&gt; fmpz_poly
+<pre class="highlight"><code class="language-julia">charpoly(V::Ring, Y::Generic.MatrixElem{T}) where {T &lt;: RingElement}</code></pre>
+<p>Return the characteristic polynomial <script type="math/tex">p</script> of the matrix <script type="math/tex">M</script>. The polynomial ring <script type="math/tex">R</script> of the resulting polynomial must be supplied and the matrix is assumed to be square.</p>
+<pre class="highlight"><code>charpoly(a::NfAbsOrdElem) -&gt; fmpz_poly
 charpoly(a::NfAbsOrdElem, FlintZZ) -&gt; fmpz_poly</code></pre>
 <p>The characteristic polynomial of <script type="math/tex">a</script>.</p>
-<pre class="highlight"><code>charpoly(V::Ring, Y::Generic.MatrixElem{T}) where {T &lt;: RingElement}</code></pre>
-<p>Return the characteristic polynomial <script type="math/tex">p</script> of the matrix <script type="math/tex">M</script>. The polynomial ring <script type="math/tex">R</script> of the resulting polynomial must be supplied and the matrix is assumed to be square.</p>
 <hr />
 <pre class="highlight"><code class="language-julia">factor(a::NfOrdElem) -&gt; Fac{NfOrdElem}</code></pre>
 <p>Computes a factorization of <code>a</code> into irreducible elements. The return value is a factorization <code>fac</code>, which satisfies <code>a = unit(fac) * prod(p^e for (p, e) in fac)</code>.</p>

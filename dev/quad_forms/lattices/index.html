@@ -927,8 +927,8 @@
 <pre class="highlight"><code class="language-julia">rational_span(L::AbsLat) -&gt; AbsSpace</code></pre>
 <p>Returns the rational span of <script type="math/tex">L</script>.</p>
 <hr />
-<pre class="highlight"><code class="language-julia">diagonal(L::AbsLat) -&gt; Vector</code></pre>
-<p>Returns the diagonal of the rational span of <script type="math/tex">L</script>.</p>
+<pre class="highlight"><code class="language-julia">diagonal(A::Mat{T}) -&gt; Vector{T}</code></pre>
+<p>Returns the diagonal of <code>A</code> as an array.</p>
 <hr />
 <pre class="highlight"><code class="language-julia">fixed_field(L::AbsLat) -&gt; NumField</code></pre>
 <p>Returns the fixed field of the involution of <script type="math/tex">L</script>.</p>
@@ -940,26 +940,28 @@
 <p>Returns the rank of <script type="math/tex">L</script>, that is the dimension of the rational span of <script type="math/tex">L</script>.</p>
 <hr />
 <pre class="highlight"><code class="language-julia">degree(L::AbsLat) -&gt; Int</code></pre>
-<p>Returns the rank of the ambient space of <script type="math/tex">L</script>.</p>
-<hr />
-<pre class="highlight"><code class="language-julia">gram_matrix_of_basis(L::AbsLat) -&gt; MatElem</code></pre>
-<p>Returns the gram matrix of the ?? of <script type="math/tex">L</script>.</p>
+<p>Returns the dimension of the ambient space of <script type="math/tex">L</script>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Missing docstring.</p>
+<p>Missing docstring for <code>gram_matrix_of_basis(L::AbsLat)</code>. Check Documenter's build log for details.</p>
+</div>
 <hr />
 <pre class="highlight"><code class="language-julia">generators(L::AbsLat; minimal = false) -&gt; Vector{Vector}</code></pre>
-<p>Returns a set of generators of <script type="math/tex">L</script>.</p>
-<p>If <code>minimal == true</code>, the number of generators is minimal.</p>
+<p>Returns a set of generators of <script type="math/tex">L</script> over the base ring of <script type="math/tex">L</script>.</p>
+<p>If <code>minimal == true</code>, the number of generators is minimal. Note that computing minimal generators is expensive.</p>
 <hr />
 <pre class="highlight"><code class="language-julia">discriminant(L::AbsLat) -&gt; NfOrdFracIdl</code></pre>
-<p>Returns the discriminant of <script type="math/tex">L</script>.</p>
+<p>Returns the discriminant of <script type="math/tex">L</script>, that is, the generalized index ideal <script type="math/tex">[L^\# : L]</script>.</p>
 <hr />
 <pre class="highlight"><code class="language-julia">pseudo_matrix(L::AbsLat) -&gt; PMat</code></pre>
 <p>Returns the basis pseudo-matrix of <script type="math/tex">L</script>.</p>
 <hr />
 <pre class="highlight"><code class="language-julia">coefficient_ideals(L::Abs) -&gt; Vector{NfOrdIdl}</code></pre>
 <p>Returns the coefficient ideals of the pseudo-basis of <script type="math/tex">L</script>.</p>
-<hr />
-<pre class="highlight"><code class="language-julia">basis_matrix(L::AbsLat) -&gt; MatElem</code></pre>
-<p>Returns the ??? of <script type="math/tex">L</script>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Missing docstring.</p>
+<p>Missing docstring for <code>basis_matrix(L::AbsLat)</code>. Check Documenter's build log for details.</p>
+</div>
 <hr />
 <pre class="highlight"><code class="language-julia">absolute_basis(L::AbsLat) -&gt; Vector</code></pre>
 <p>Returns a <script type="math/tex">\mathbf{Z}</script>-basis of <script type="math/tex">L</script>.</p>
@@ -972,10 +974,10 @@
 <h2 id="rational-invariants">Rational invariants</h2>
 <hr />
 <pre class="highlight"><code class="language-julia">hasse_invariant(L::AbsLat, p::Union{InfPlc, NfOrdIdl}) -&gt; Int</code></pre>
-<p>Returns the Hasse invariant of the rational span of <script type="math/tex">L</script> at <script type="math/tex">p</script>.</p>
+<p>Returns the Hasse invariant of the rational span of <script type="math/tex">L</script> at <script type="math/tex">p</script>. The lattice must be quadratic.</p>
 <hr />
 <pre class="highlight"><code class="language-julia">witt_invariant(L::AbsLat, p::Union{InfPlc, NfOrdIdl}) -&gt; Int</code></pre>
-<p>Returns the Witt invariant of the rational span of <script type="math/tex">L</script> at <script type="math/tex">p</script>.</p>
+<p>Returns the Witt invariant of the rational span of <script type="math/tex">L</script> at <script type="math/tex">p</script>. The lattice must be quadratic.</p>
 <hr />
 <pre class="highlight"><code class="language-julia">isrationally_equivalent(L::AbsLat, M::AbsLat, p::Union{InfPlc, NfOrdIdl})
                                                                      -&gt; Bool</code></pre>
@@ -1004,14 +1006,14 @@
 <p><a id='Module-operations'></a></p>
 <p><a id='Module-operations-1'></a></p>
 <h2 id="module-operations">Module operations</h2>
-<hr />
-<pre class="highlight"><code class="language-julia">+(L::AbsLat, M::AbsLat) -&gt; AbsLat</code></pre>
-<p>Returns the sum of <script type="math/tex">L</script> and <script type="math/tex">M</script>.</p>
-<p>The lattices <script type="math/tex">L</script> and <script type="math/tex">M</script> must have the same ambient space.</p>
-<hr />
-<pre class="highlight"><code class="language-julia">intersect(L::AbsLat, M::AbsLat) -&gt; AbsLat</code></pre>
-<p>Returns the intersection of <script type="math/tex">L</script> and <script type="math/tex">M</script>.</p>
-<p>The lattices <script type="math/tex">L</script> and <script type="math/tex">M</script> must have the same ambient space.</p>
+<div class="admonition warning">
+<p class="admonition-title">Missing docstring.</p>
+<p>Missing docstring for <code>Base.:(+)(::AbsLat, M::AbsLat)</code>. Check Documenter's build log for details.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Missing docstring.</p>
+<p>Missing docstring for <code>intersect(L::AbsLat, M::AbsLat)</code>. Check Documenter's build log for details.</p>
+</div>
 <hr />
 <pre class="highlight"><code class="language-julia">*(a::NumFieldElem, M::AbsLat) -&gt; AbsLat</code></pre>
 <p>Returns the lattice <script type="math/tex">aM</script> inside the ambient space of <script type="math/tex">M</script>.</p>
