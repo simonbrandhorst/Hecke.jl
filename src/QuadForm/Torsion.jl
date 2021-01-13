@@ -82,6 +82,15 @@ function discriminant_group(L::ZLat)
   return torsion_quadratic_module(dual(L), L)
 end
 
+@doc Markdown.doc"""
+    order(T::torQuadMod) -> fmpz
+
+Return the order of `T`.
+"""
+function order(T::TorQuadMod)
+  return order(abelian_group(T))
+end
+
 ################################################################################
 #
 #  Basic field access
