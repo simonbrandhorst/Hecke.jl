@@ -43,19 +43,22 @@ julia> gram_matrix(L) == matrix(ZZ, [2 -1; -1 2])
 true
 ```
 """
-function Zlattice(B::fmpq_mat; gram = identity_matrix(FlintQQ, ncols(B)), check::Bool=true)
-  V = quadratic_space(FlintQQ, gram, check=check)
+function Zlattice(B::fmpq_mat; gram = identity_matrix(FlintQQ, ncols(B)), check::Bool=true, cache_ambient::Bool=true)
+  V = quadratic_space(FlintQQ, gram, check=check, cached=cache_ambient)
   return lattice(V, B, check=check)
 end
 
-function Zlattice(B::fmpz_mat; gram = identity_matrix(FlintQQ, ncols(B)), check::Bool=true)
-  V = quadratic_space(FlintQQ, gram, check=check)
+function Zlattice(B::fmpz_mat; gram = identity_matrix(FlintQQ, ncols(B)), check::Bool=true, cache_ambient::Bool=true)
+  V = quadratic_space(FlintQQ, gram, check=check, cached=cache_ambient)
   return lattice(V, B, check=check)
 end
 
-function Zlattice(;gram, check=true)
+function Zlattice(;gram, check=true, cache_ambient=true)
   n = nrows(gram)
-  return lattice(quadratic_space(FlintQQ, gram, check=check), identity_matrix(FlintQQ, n), check=check)
+  V = quadratic_space(FlintQQ, gram, check=check, cached=cache_ambient)
+  L = lattice(V, identity_matrix(FlintQQ, n), check=check)
+  L.gram_matrix = gram_matrix(V)
+  return L
 end
 
 @doc Markdown.doc"""
@@ -66,15 +69,18 @@ Return the Z-lattice with basis matrix $B$ inside the quadratic space $V$.
 function lattice(V::QuadSpace{FlintRationalField, fmpq_mat}, B::MatElem; isbasis::Bool = true, check::Bool = true)
   @req dim(V) == ncols(B) "Ambient space and the matrix B have incompatible dimension"
   local Gc
-  try
-    Gc = change_base_ring(FlintQQ, B)
-  catch e
-    throw(error("Cannot convert entries of the matrix to the rationals"))
+  if typeof(B) == fmpq_mat
+    Gc = B
+  else
+    try
+      Gc = change_base_ring(FlintQQ, B)
+    catch e
+      throw(error("Cannot convert entries of the matrix to the rationals"))
+    end
+    if typeof(Gc) !== fmpq_mat
+      throw(error("Cannot convert entries of the matrix to the rationals"))
+    end
   end
-  if typeof(Gc) !== fmpq_mat
-    throw(error("Cannot convert entries of the matrix to the rationals"))
-  end
-
   # We need to produce a basis matrix
 
   if !isbasis
@@ -628,8 +634,11 @@ hyperbolic_plane_lattice(n::Union{Int64, fmpz} = 1) = Zlattice(:H, n)
 
 function dual(L::ZLat)
   G = gram_matrix(L)
-  new_bmat = inv(G)*basis_matrix(L)
-  return lattice(ambient_space(L), new_bmat)
+  Gi = inv(G)
+  new_bmat = Gi*basis_matrix(L)
+  L = lattice(ambient_space(L), new_bmat)
+  L.gram_matrix = Gi
+  return L
 end
 
 ################################################################################

@@ -119,7 +119,7 @@ end
 # We pass l === nothing around to indicate that there is no lower bound.
 # This allows us to turn off the lower bound checking during compilation.
 
-function __enumerate_gram(G::fmpz_mat, l::Union{Nothing, Int}, c::Int)
+function __enumerate_gram(G::fmpz_mat, l::Union{Nothing, Int}, c::Int, filter=nothing)
   # This is the "high" level function
   Q = _pseudo_cholesky(G, Matrix{fmpq})
   n = nrows(G)
@@ -130,37 +130,37 @@ function __enumerate_gram(G::fmpz_mat, l::Union{Nothing, Int}, c::Int)
   if 2 * k < (isbig ? 32 : 64)
     @vprint :Lattice 1 "Enumerating using Int\n"
     Qint = Matrix{UnsafeRational{Int}}([Int(numerator(q))//Int(denominator(q)) for q in Q])
-    res = __enumerate_cholesky(Qint, c)
-    @hassert :Lattice 1 length(__enumerate_gram(G, l, c, Rational{Int})) == length(res)
+    res = __enumerate_cholesky(Qint, c, filter)
+    @hassert :Lattice 1 length(__enumerate_gram(G, l, c, Rational{Int}),filter) == length(res)
   elseif 2 * k < 64
     @vprint :Lattice 1 "Enumerating using Int64\n"
     Qint64 = Matrix{UnsafeRational{Int64}}([Int64(numerator(q))//Int64(denominator(q)) for q in Q])
-    res = __enumerate_cholesky(Qint64, c)
-    @hassert :Lattice 1 length(__enumerate_gram(G, l, c, Rational{Int64})) == length(res)
+    res = __enumerate_cholesky(Qint64, c, filter)
+    @hassert :Lattice 1 length(__enumerate_gram(G, l, c, Rational{Int64}), filter) == length(res)
   elseif 2 * k < 128
     Qint128 = Matrix{UnsafeRational{Int128}}([Int128(numerator(q))//Int128(denominator(q)) for q in Q])
     @vprint :Lattice 1 "Enumerating using Int128\n"
-    res = __enumerate_cholesky(Qint128, c)
-    @hassert :Lattice 1 length(__enumerate_gram(G, l, c, Rational{Int128})) == length(res)
+    res = __enumerate_cholesky(Qint128, c, filter)
+    @hassert :Lattice 1 length(__enumerate_gram(G, l, c, Rational{Int128}), filter) == length(res)
   else
     @vprint :Lattice 1 "Enumerating using fmpq\n"
-    res = __enumerate_cholesky(Q, c)
+    res = __enumerate_cholesky(Q, c, filter)
   end
-  @hassert :Lattice 1 length(__enumerate_gram(G, l, c, fmpq)) == length(res)
+  @hassert :Lattice 1 length(__enumerate_gram(G, l, c, fmpq, filter)) == length(res)
   return res
 end
 
-function __enumerate_gram(G::fmpz_mat, l::Union{Int, fmpz, Nothing}, c::Union{Int, fmpz}, ::Type{T}) where {T}
+function __enumerate_gram(G::fmpz_mat, l::Union{Int, fmpz, Nothing}, c::Union{Int, fmpz}, ::Type{T}, filter) where {T}
   Q = _pseudo_cholesky(G, Matrix{T})
-  v = __enumerate_cholesky(Q, l, c)
+  v = __enumerate_cholesky(Q, l, c, filter)
   return v
 end
 
-function __enumerate_cholesky(Q::fmpq_mat, l::Union{Int, Nothing}, c::Int)
-  return __enumerate(Matrix(Q), l, c)
+function __enumerate_cholesky(Q::fmpq_mat, l::Union{Int, Nothing}, c::Int, filter)
+  return __enumerate(Matrix(Q), l, c, filter)
 end
 
-function __enumerate_cholesky(Q::Matrix{fmpq}, l::Union{Int, fmpz, Nothing}, c::S) where {S <: Union{Int, fmpz}}
+function __enumerate_cholesky(Q::Matrix{fmpq}, l::Union{Int, fmpz, Nothing}, c::S, filter) where {S <: Union{Int, fmpz}}
   res = Tuple{Vector{S}, S}[]
   n = nrows(Q)
   i = n
@@ -257,6 +257,10 @@ function __enumerate_cholesky(Q::Matrix{fmpq}, l::Union{Int, fmpz, Nothing}, c::
 
       len = deepcopy(t2)
     end
+    if !(filter isa Nothing)
+      _short_enough = _short_enough && (len in filter)
+    end
+
 
     if _short_enough
       # t1 must be a UInt
@@ -279,7 +283,7 @@ function __enumerate_cholesky(Q::Matrix{fmpq}, l::Union{Int, fmpz, Nothing}, c::
   end
 end
 
-function __enumerate_cholesky(Q::Matrix{S}, l::Union{Int, Nothing}, c::Int) where {S <: Union{Rational, UnsafeRational}}
+function __enumerate_cholesky(Q::Matrix{S}, l::Union{Int, Nothing}, c::Int, filter) where {S <: Union{Rational, UnsafeRational}}
   res = Tuple{Vector{Int}, Int}[]
   n = nrows(Q)
   i = n
@@ -357,8 +361,16 @@ function __enumerate_cholesky(Q::Matrix{S}, l::Union{Int, Nothing}, c::Int) wher
     #len = c - T[1] + Q[1, 1]*(x[1] + U[1])^2
     len = Int(compute_len!(c, T, Q, x, U))
     if len <= c
-      if l isa Int
-        if len >= l
+      if l isa Int && !(filter isa Nothing)
+        if len >= l && len in filter
+          y = Vector{Int}(undef, n)
+          @inbounds for i in 1:n
+            y[i] = x[i]
+          end
+          push!(res, (y, len))
+        end
+      elseif l isa Int
+        if len >= l && len in filter
           y = Vector{Int}(undef, n)
           @inbounds for i in 1:n
             y[i] = x[i]
@@ -516,7 +528,7 @@ end
 # If transform === nothing, no transform
 #
 # Return value is Vector{Tuple{Vector{Int}, fmpz}}
-function _short_vectors_gram_nolll_integral(G, _lb, _ub, transform)
+function _short_vectors_gram_nolll_integral(G, _lb, _ub, transform, filter=nothing)
   n = nrows(G)
   ub = floor(fmpz, _ub)
   # G is integral, so q(x) <= ub is equivalent to q(x) <= floor(ub)
@@ -524,24 +536,24 @@ function _short_vectors_gram_nolll_integral(G, _lb, _ub, transform)
 
   if ub isa fmpz && fits(Int, ub)
     if _lb isa Nothing
-      V = __enumerate_gram(G, nothing, Int(ub), fmpq)
+      V = __enumerate_gram(G, nothing, Int(ub), fmpq, filter)
     else
       lb = ceil(fmpz, _lb)
       if iszero(lb)
-        V = __enumerate_gram(G, nothing, Int(ub), fmpq)
+        V = __enumerate_gram(G, nothing, Int(ub), fmpq, filter)
       else
-        V = __enumerate_gram(G, Int(lb), Int(ub), fmpq)
+        V = __enumerate_gram(G, Int(lb), Int(ub), fmpq, filter)
       end
     end
   else
     if _lb isa Nothing
-      V = __enumerate_gram(G, nothing, ub, fmpq)
+      V = __enumerate_gram(G, nothing, ub, fmpq, filter)
     else
       lb = ceil(fmpz, _lb)
       if iszero(lb)
-        V = __enumerate_gram(G, nothing, ub, fmpq)
+        V = __enumerate_gram(G, nothing, ub, fmpq, filter)
       else
-        V = __enumerate_gram(G, lb, ub, fmpq)
+        V = __enumerate_gram(G, lb, ub, fmpq, filter)
       end
     end
   end
@@ -581,8 +593,11 @@ function _short_vectors_gram(_G, lb, ub::Rational{<: Integer}; hard::Bool = fals
   return _short_vectors_gram(_G, lb, fmpq(ub); hard = hard)
 end
 
-function _short_vectors_gram(_G, lb, ub; hard::Bool = false)
+function _short_vectors_gram(_G, lb, ub; hard::Bool = false, filter=nothing)
   d = denominator(_G)
+  if !(filter isa Nothing)
+    filter = Set([ZZ(d*i) for i in filter])
+  end
   G = change_base_ring(FlintZZ, d * _G)
   if hard
     Glll, T = lll_gram_with_transform(G, lll_ctx(0.99999999999999, 0.500000000001, :gram))
@@ -590,9 +605,9 @@ function _short_vectors_gram(_G, lb, ub; hard::Bool = false)
     Glll, T = lll_gram_with_transform(G, lll_ctx(0.9999, 0.5001, :gram))
   end
   if isone(T)
-    V = _short_vectors_gram_nolll_integral(Glll, d * lb, d * ub, nothing)
+    V = _short_vectors_gram_nolll_integral(Glll, d * lb, d * ub, nothing, filter)
   else
-    V = _short_vectors_gram_nolll_integral(Glll, d * lb, d * ub, T)
+    V = _short_vectors_gram_nolll_integral(Glll, d * lb, d * ub, T, filter)
   end
   W = Vector{Tuple{Vector{Int}, elem_type(base_ring(_G))}}(undef, length(V))
   for i in 1:length(V)
@@ -602,8 +617,8 @@ function _short_vectors_gram(_G, lb, ub; hard::Bool = false)
 end
 
 # No assumption on _G, algorithm applies LLL
-function _short_vectors_gram(_G, ub; hard::Bool = false)
-  return _short_vectors_gram(_G, fmpz(0), ub, hard = hard)
+function _short_vectors_gram(_G, ub; hard::Bool = false, filter=nothing)
+  return _short_vectors_gram(_G, fmpz(0), ub, hard = hard, filter=filter)
 end
 
 # No assumption on _G, algorithm applies LLL
